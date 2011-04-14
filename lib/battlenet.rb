@@ -1,0 +1,3 @@
+module Battlenet
+  # Your code goes here...
+end
