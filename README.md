@@ -5,7 +5,7 @@
     |_.__/ \__,_|\__|\__|_|\___|_| |_|\___|\__|
 
               A Ruby library for the
-          Battle.net Community Platform API
+         Battle.net Community Platform API
 
 Battlenet is a Ruby library that exposes Blizzard's [Community Platform API](http://us.battle.net/wow/en/forum/topic/2369881371).
 
@@ -15,11 +15,6 @@ Installing
 Battlenet is available as a Ruby gem. Install it via
 
     [sudo] gem install battlenet
-
-Then, using it is as simple as
-
-    require 'battlenet'
-    api = Battlenet::API
 
 Use
 ===
@@ -33,7 +28,39 @@ In general, the API is split into several sub-modules, each corresponding to an 
     Battlenet::API::Realm.status :realm => ["Nazjatar", "Shadowsong"]
      # => "http://us.battle.net/api/wow/realm/status?realm=Nazjatar&realm=Shadowsong"
 
-**Note**: This is subject to change depending on how Blizzard architects the rest of their API.
+Calls to the methods return an array of Hashes, and each hash contains the data for the queried resources. The attributes can be accessed via Strings or Symbols (you can set this to Strings only via `Battlenet::API.indifferent_hashes = false`).
+
+**Note**: This is all subject to change depending on how Blizzard architects the rest of their API.
+
+Configuration
+=============
+
+You may pass multiple options to Battlenet to change the behavior.
+
+Indifferent Hashes
+------------------
+
+By default, the Hashes returned by the library are indifferent--you can use either Strings or Symbols to access their elements.
+
+    realm["population"] = "low"
+    realm[:population]
+     # => "low"
+
+If you wish do disable this functionality and use Strings only, you may do so using the following code:
+
+    Battlenet::API.indifferent_hashes = false
+
+HTTP Adapter
+------------
+
+Battlenet supports multiple adapters for fetching API data over the Internet. By default, it uses Ruby's built-in `Net::HTTP` library. If you wish to use a different adapter, specify it like this:
+
+    Battlenet::API.http_adapter = Battlenet::Adapter::Typhoeus
+
+The following adapters are supported (more may be added later):
+
+* `Battlenet::Adapter::NetHTTP` - Ruby's `Net::HTTP` library
+* `Battlenet::Adapter::Typhoeus` - [Typhoeus](https://github.com/dbalatero/typhoeus)
 
 Currently Supported APIs
 ========================
