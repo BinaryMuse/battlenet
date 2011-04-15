@@ -26,39 +26,35 @@ In general, the API is split into several sub-modules, each corresponding to an 
     Battlenet::API::Realm.status :realm => ["Nazjatar", "Shadowsong"]
      # => "http://us.battle.net/api/wow/realm/status?realm=Nazjatar&realm=Shadowsong"
 
-Calls to the methods return an array of Hashes, and each hash contains the data for the queried resources. The attributes can be accessed via Strings or Symbols (you can set this to Strings only via `Battlenet::API.indifferent_hashes = false`).
+Calls to the methods return an array of Hashes, and each hash contains the data for the queried resources. The attributes can be accessed via Strings or Symbols (you can set this to Strings only via `Battlenet::API.set_option`, see below).
 
 **Note**: This is all subject to change depending on how Blizzard architects the rest of their API.
 
 Configuration
 =============
 
-You may pass multiple options to Battlenet to change the behavior.
+You may pass multiple options to Battlenet to change its behavior.
 
-Indifferent Hashes
-------------------
+Region
+------
 
-By default, the Hashes returned by the library are indifferent--you can use either Strings or Symbols to access their elements.
+By default, the region is set to `:us`, which corresponds to the US Battle.net API. You may set this to any symbol to force the library to use that region's API.
 
-    realm["population"] = "low"
-    realm[:population]
-     # => "low"
-
-If you wish do disable this functionality and use Strings only, you may do so using the following code:
-
-    Battlenet::API.indifferent_hashes = false
+    Battlenet::API.set_option(:region, :eu)
 
 HTTP Adapter
 ------------
 
 Battlenet supports multiple adapters for fetching API data over the Internet. By default, it uses Ruby's built-in `Net::HTTP` library. If you wish to use a different adapter, specify it like this:
 
-    Battlenet::API.http_adapter = Battlenet::Adapter::Typhoeus
+    Battlenet::API.set_option(:http_adapter, :typhoeus)
 
-The following adapters are supported (more may be added later):
+The following adapters are currently supported (more may be added later):
 
-* `Battlenet::Adapter::NetHTTP` - Ruby's `Net::HTTP` library
-* `Battlenet::Adapter::Typhoeus` - [Typhoeus](https://github.com/dbalatero/typhoeus)
+* `:net_http` - Ruby's `Net::HTTP` library
+* `:typhoeus` - [Typhoeus](https://github.com/dbalatero/typhoeus)
+
+Note that the adapter must be set before any API calls are made.
 
 Currently Supported APIs
 ========================
@@ -88,7 +84,7 @@ Realm Status API
 Contributing
 ============
 
-If you would like to contribute to the project, please feel free to do so. Just fork the project, commit your changes (preferably to a new branch), and then send me a pull request via GitHub.
+If you would like to contribute to the project, please feel free to do so. Just fork the project, commit your changes (preferably to a new branch), and then send me a pull request via GitHub. Be sure to add tests for your feature or fix.
 
 Please do not change the contents of the `VERSION` file, or if you do, do so in a separate commit so that I can cherry-pick around it.
 
