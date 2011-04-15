@@ -4,7 +4,7 @@
     | |_) | (_| | |_| |_| |  __/ | | |  __/ |_ 
     |_.__/ \__,_|\__|\__|_|\___|_| |_|\___|\__|
 
-               A Ruby library for the
+              A Ruby library for the
           Battle.net Community Platform API
 
 Battlenet is a Ruby library that exposes Blizzard's [Community Platform API](http://us.battle.net/wow/en/forum/topic/2369881371).
