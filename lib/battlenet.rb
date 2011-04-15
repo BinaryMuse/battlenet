@@ -1,3 +1,2 @@
-module Battlenet
-  # Your code goes here...
-end
+require 'battlenet/api'
+require 'battlenet/api/realm'
