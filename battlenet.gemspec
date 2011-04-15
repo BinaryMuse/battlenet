@@ -1,9 +1,10 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
+require 'battlenet/version'
 
 Gem::Specification.new do |s|
   s.name        = "battlenet"
-  s.version     = File.read(File.expand_path('../VERSION', __FILE__)).match(/^(.*)\s*/)[1]
+  s.version     = Battlenet::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Brandon Tilley"]
   s.email       = ["brandon@brandontilley.com"]
