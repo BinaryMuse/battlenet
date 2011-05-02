@@ -17,7 +17,7 @@ Battlenet is available as a Ruby gem. Install it via
 Use
 ===
 
-In general, the API is split into several sub-modules, each corresponding to an entity in Blizzard's API. For example, methods for using the Realm Status API are located in the module `Battlenet::API::Realm`. Methods on the module allow you to fetch certain information about the given entity. Arguments passed to the methods allow you to specify query string parameters. As an example, here are some sample API calls and the URL they translate into.
+In general, the API is split into several sub-modules, each corresponding to an entity in Blizzard's API. For example, methods for using the Realm Status API are located in the module `Battlenet::API::Realm`. Methods on the module allow you to fetch certain information about the given entity. Arguments passed to the methods allow you to specify query string parameters. As an example, here are some sample API calls and the URLs they translate into.
 
     Battlenet::API::Realm.status
      # => "http://us.battle.net/api/wow/realm/status"
@@ -26,7 +26,7 @@ In general, the API is split into several sub-modules, each corresponding to an 
     Battlenet::API::Realm.status :realm => ["Nazjatar", "Shadowsong"]
      # => "http://us.battle.net/api/wow/realm/status?realm=Nazjatar&realm=Shadowsong"
 
-Calls to the methods return an array of Hashes, and each hash contains the data for the queried resources. The attributes can be accessed via Strings or Symbols (you can set this to Strings only via `Battlenet::API.set_option`, see below).
+Calls to the methods return an array of Hashes, and each hash contains the data for the queried resources.
 
 **Note**: This is all subject to change depending on how Blizzard architects the rest of their API.
 
