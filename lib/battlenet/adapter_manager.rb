@@ -24,6 +24,10 @@ module Battlenet
       adapter = load_adapter adapter_name, adapter_class
     end
 
+    def register(identifier, klass)
+      @adapters[identifier] = klass
+    end
+
     private
 
       def load_adapter(adapter_name, klass_name)

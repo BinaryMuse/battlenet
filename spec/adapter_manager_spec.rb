@@ -44,4 +44,12 @@ describe Battlenet::AdapterManager do
       adapter.should be_a Battlenet::Adapter::NetHTTP
     end
   end
+
+  context "#register" do
+    it "registers an adapter" do
+      lambda do
+        subject.register(:adapter_identifier, 'AdapterClass')
+      end.should change(subject.adapters, :count).by(1)
+    end
+  end
 end

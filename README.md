@@ -56,6 +56,11 @@ The following adapters are currently supported (more may be added later):
 
 Note that the adapter must be set before any API calls are made.
 
+
+### Creating an Adapter
+
+If you wish to, you can create your own adapters. See the [Creating an Adapter wiki page](https://github.com/BinaryMuse/battlenet/wiki/Creating-an-Adapter) for more details.
+
 Currently Supported APIs
 ========================
 
