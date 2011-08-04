@@ -52,6 +52,12 @@ module Battlenet
       JSON::parse body
     end
 
+    def get_file(path)
+      code, body = get path
+      raise APIError.new(code, body) unless code == 200
+      JSON::parse body
+    end
+    
     def get(url)
       adapter.get(url)
     end
