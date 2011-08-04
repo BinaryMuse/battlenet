@@ -8,7 +8,6 @@ module Battlenet
       def data(slug, lastModified, options = {})
         data = @api.make_api_call 'auction/data/' +slug, options
         if data["files"][0]["lastModified"] > lastModified
-          puts "getting: " +data["files"][0]["url"]
           file = @api.get_file data["files"][0]["url"]
         else 
           logger.info "Realm " +slug+ " is up to date."
