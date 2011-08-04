@@ -11,7 +11,8 @@ module Battlenet
           puts "getting: " +data["files"][0]["url"]
           file = @api.get_file data["files"][0]["url"]
         else 
-          puts "Your auction data is up to date"
+          logger.info "Realm " +slug+ " is up to date."
+          data
         end
       end
     end
