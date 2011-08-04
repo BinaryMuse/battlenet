@@ -1,4 +1,3 @@
-Battlenet::API.set_option(:region, :eu)
 module Battlenet
   module API
     module Auction
@@ -18,5 +17,3 @@ module Battlenet
     end
   end
 end
-
-data = Battlenet::API::Auction.data("Aegwynn", 123)
