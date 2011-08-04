@@ -10,7 +10,7 @@ module Battlenet
         if data["files"][0]["lastModified"] > lastModified
           file = @api.get_file data["files"][0]["url"]
         else 
-          data
+          data["files"]
         end
       end
     end
