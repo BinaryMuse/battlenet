@@ -10,7 +10,6 @@ module Battlenet
         if data["files"][0]["lastModified"] > lastModified
           file = @api.get_file data["files"][0]["url"]
         else 
-          logger.info "Realm " +slug+ " is up to date."
           data
         end
       end
