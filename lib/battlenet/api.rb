@@ -18,6 +18,10 @@ module Battlenet
 
     extend self
 
+    attr_accessor :auth
+
+    @auth = nil
+
     @config = {
       :indifferent_hashes => true,
       :http_adapter       => :net_http,
@@ -53,7 +57,15 @@ module Battlenet
     end
 
     def get(url)
-      adapter.get(url)
+      headers = {
+        'User-Agent' => 'battlenet gem for Ruby'
+      }
+      puts "Debug: url : #{url}"
+      unless @auth.nil?
+        
+      else
+        adapter.get(url,headers)
+      end
     end
 
     def make_query_string(query)
