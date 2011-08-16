@@ -6,7 +6,12 @@ module Battlenet
     class NetHTTP < AbstractAdapter
       def get(url,headers={})
         uri = URI.parse(url)
-        req = Net::HTTP.new(uri.host)
+        if headers["Authorization"].nil?
+          req = Net::HTTP.new(uri.host,80)
+        else
+          req = Net::HTTP.new(uri.host,443)
+          req.use_ssl=true
+        end
         req.get(uri.request_uri, headers).body
         response = req.get(uri.request_uri,headers)
         [response.code.to_i, response.body]
