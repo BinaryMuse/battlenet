@@ -48,24 +48,22 @@ module Battlenet
     def make_api_call(path, query = {})
       query_string = query.empty? ? '' : make_query_string(query)
       url = base_url
-      url << (path.start_with?('/') ? '' : '/')
+      path = (path.start_with?('/') ? '' : '/')+path
       url << path
       url << query_string
-      code, body = get url
+      headers = {
+        'User-Agent' => 'battlenet gem for Ruby'
+      }
+      unless @auth.nil?
+        headers['Authorization'] = make_auth_string("/api/wow"+path,@auth[:privKey],@auth[:pubKey])
+      end
+      code, body = get(url,headers)
       raise APIError.new(code, body) unless code == 200
       JSON::parse body
     end
 
-    def get(url)
-      headers = {
-        'User-Agent' => 'battlenet gem for Ruby'
-      }
-      puts "Debug: url : #{url}"
-      unless @auth.nil?
-        
-      else
-        adapter.get(url,headers)
-      end
+    def get(url, headers = {})
+      adapter.get(url,headers)
     end
 
     def make_query_string(query)
@@ -81,5 +79,19 @@ module Battlenet
 
       query_string.chomp("&").chomp("?")
     end
+
+    def make_auth_string(requestUrl,privKey,pubKey, verb = "GET")
+      require 'digest/sha1'
+      require 'HMAC-SHA1'
+      require 'Base64'
+
+      stringToSign = verb + "\n" +
+          Time.now.getutc.to_s + "\n" + # The generated time looks like "2011-08-17 07:41:52 UTC", which is not exactly like in Blizzards example, be aware that this is untested code!
+          requestUrl + "\n"
+
+      signature = Base64.encode64(HMAC::SHA1.digest(privKey.encode("utf-8"),stringToSign.encode("utf-8")))
+      "BNET" + " " + pubKey + ":" + signature
+    end
+    
   end
 end
