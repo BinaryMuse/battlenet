@@ -8,7 +8,6 @@ module Battlenet
       def data(slug, lastModified)
         puts "Requesting auction modified file for #{slug}:"
         data = @api.make_api_call 'auction/data/' +slug
-        puts data
         if data["files"][0]["lastModified"] > lastModified
           auctionsFile = @api.get_file(data["files"][0]["url"])
         else 
