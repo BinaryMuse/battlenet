@@ -95,12 +95,14 @@ module Battlenet
     end
 
     def make_auth_string(requestUrl,privKey,pubKey, verb = "GET")
+      # be aware that this is untested code! 
+      # I dont have a auth key pair from blizz, so I cant really test this.
       require 'digest/sha1'
       require 'HMAC-SHA1'
       require 'Base64'
 
       stringToSign = verb + "\n" +
-          Time.now.getutc.to_s + "\n" + # The generated time looks like "2011-08-17 07:41:52 UTC", which is not exactly like in Blizzards example, be aware that this is untested code!
+          CGI.rfc1123_date(Time.now) + "\n" +
           requestUrl + "\n"
 
       signature = Base64.encode64(HMAC::SHA1.digest(privKey.encode("utf-8"),stringToSign.encode("utf-8")))
