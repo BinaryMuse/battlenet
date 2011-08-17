@@ -25,8 +25,17 @@ module Battlenet
     @config = {
       :indifferent_hashes => true,
       :http_adapter       => :net_http,
-      :region             => :us
+      :region             => :us,
+      :locale             => nil
     }
+    # locales are region dependant, the default is the first locale for each region: 
+    # possible_locales = {
+    #   :us => ["en_US","es_MX"],
+    #   :eu => ["en_GB","es_ES","fr_FR","ru_RU","de_DE"],
+    #   :kr => ["ko_kr"],
+    #   :tw => ["zh_TW"],
+    #   :cn => ["zh_CN"] # battlenet.com.cn
+    # }
 
     def set_option(setting, value)
       @config[setting] = value
@@ -76,7 +85,7 @@ module Battlenet
           value.each { |v| query_string << "#{key}=#{CGI.escape v}&" }
         end
       end
-
+      query_string << "locale=#{CGI.escape(@config[:locale])}&" unless @config[:locale].nil?
       query_string.chomp("&").chomp("?")
     end
 
