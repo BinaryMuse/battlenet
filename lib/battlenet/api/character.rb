@@ -11,9 +11,7 @@ module Battlenet
         # to indicate that one or more of the optional datasets is to be retrieved. 
         # Those additional fields are listed in the subsection titled "Optional Fields".
         # see: http://blizzard.github.com/api-wow-docs/#id3380312
-        data = @api.make_api_call "character/#{realm}/#{name}", {:fields => fields.join(",")}
-        puts data
-        data["realms"]
+        @api.make_api_call "character/#{realm}/#{name}", {:fields => fields.join(",")}
       end
       
       def list_possible_fields()
