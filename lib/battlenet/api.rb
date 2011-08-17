@@ -65,19 +65,27 @@ module Battlenet
       path = (path.start_with?('/') ? '' : '/')+path
       url << path
       url << query_string
-      headers = {
-        'User-Agent' => 'battlenet gem for Ruby'
-      }
-      unless @auth.nil?
-        headers['Authorization'] = make_auth_string("/api/wow"+path,@auth[:privKey],@auth[:pubKey])
-      end
-      code, body = get(url,headers)
+      code, body = get(url,headers())
       raise APIError.new(code, body) unless code == 200
       JSON::parse body
     end
 
     def get(url, headers = {})
       adapter.get(url,headers)
+    end
+    
+    def get_file(url, headers = {})
+      adapter.get(url,headers())
+    end
+
+    def headers()
+      headers = {
+        'User-Agent' => 'battlenet gem for Ruby'
+      }
+      unless @auth.nil?
+        headers['Authorization'] = make_auth_string("/api/wow"+path,@auth[:privKey],@auth[:pubKey])
+      end
+      headers
     end
 
     def make_query_string(query)
