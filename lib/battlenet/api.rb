@@ -60,7 +60,7 @@ module Battlenet
     end
 
     def make_api_call(path, query = {})
-      query_string = query.empty? ? '' : make_query_string(query)
+      query_string = (query.empty? and @config[:locale].nil?) ? '' : make_query_string(query)      
       url = base_url
       path = (path.start_with?('/') ? '' : '/')+path
       url << path
