@@ -51,7 +51,12 @@ module Battlenet
 
     def base_url
       region = get_option(:region, :us).to_s
-      "http://#{region}.battle.net/api/wow"
+      unless region == "cn"
+        "http://#{region}.battle.net/api/wow"
+      else
+        # chinese battlenet uses another domain (see: http://us.battle.net/wow/en/forum/topic/2878487920#1)
+        "http://www.battlenet.com.cn/api/wow"
+      end
     end
 
     def make_api_call(path, query = {})
