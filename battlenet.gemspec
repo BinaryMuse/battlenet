@@ -12,6 +12,8 @@ Gem::Specification.new do |s|
   s.summary     = %q{Easily consume Blizzard's Community Platform API.}
   s.description = %q{Easily consume Blizzard's Community Platform API.}
 
+  s.add_dependency "ruby-hmac"
+
   if s.respond_to?(:add_development_dependency)
     s.add_development_dependency "rspec"
   end
