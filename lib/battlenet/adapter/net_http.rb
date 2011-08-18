@@ -12,7 +12,6 @@ module Battlenet
           req = Net::HTTP.new(uri.host,443)
           req.use_ssl=true
         end
-        req.get(uri.request_uri, headers).body
         response = req.get(uri.request_uri,headers)
         [response.code.to_i, response.body]
       end
