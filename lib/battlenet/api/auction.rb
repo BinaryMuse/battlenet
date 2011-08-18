@@ -14,6 +14,19 @@ module Battlenet
           data["files"][0]
         end
       end
+
+      def Horde(auctions)
+        auctions['horde']["auctions"]
+      end
+
+      def Neutral(auctions)
+        auctions['neutral']["auctions"]
+      end
+
+      def Alliance(auctions)
+        auctions['alliance']["auctions"]
+      end
+
     end
   end
 end
