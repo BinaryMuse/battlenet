@@ -82,19 +82,19 @@ describe Battlenet::API do
 
   context "#make_api_call" do
     it "makes a get call with the correct URL" do
-      subject.should_receive(:get).once.with("http://us.battle.net/api/wow/my/path").and_return([200, '{"testing": "value"}'])
+      subject.should_receive(:get).once.with("http://us.battle.net/api/wow/my/path",subject.headers('/my/path')).and_return([200, '{"testing": "value"}'])
       subject.send(:make_api_call, '/my/path')
     end
 
     it "adds a slash to the path if necessary" do
-      subject.should_receive(:get).once.with("http://us.battle.net/api/wow/my/path").and_return([200, '{"testing": "value"}'])
+      subject.should_receive(:get).once.with("http://us.battle.net/api/wow/my/path",subject.headers('my/path')).and_return([200, '{"testing": "value"}'])
       subject.send(:make_api_call, 'my/path')
     end
 
     it "converts the second parameter into a query string" do
       options = {:first => ["value1", "va&lue2"], :second => "val&ue3"}
       query_string = subject.send(:make_query_string, options)
-      subject.should_receive(:get).once.with("http://us.battle.net/api/wow/my/path#{query_string}").and_return([200, '{"testing": "value"}'])
+      subject.should_receive(:get).once.with("http://us.battle.net/api/wow/my/path#{query_string}",subject.headers('my/path')).and_return([200, '{"testing": "value"}'])
       subject.send(:make_api_call, 'my/path', options)
     end
 
