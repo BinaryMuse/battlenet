@@ -60,11 +60,13 @@ module Battlenet
     end
 
     def make_api_call(path, query = {})
+      puts query
       query_string = (query.empty? and @config[:locale].nil?) ? '' : make_query_string(query)      
       url = base_url
       path = (path.start_with?('/') ? '' : '/')+path
       url << path
       url << query_string
+      puts url
       code, body = get(url,headers(path))
       raise APIError.new(code, body) unless code == 200
       JSON::parse body
@@ -92,6 +94,9 @@ module Battlenet
       query_string = "?"
       query.each do |key, value|
         case value
+        when Fixnum
+          value = value.to_s
+          query_string << "#{key}=#{CGI.escape value}&"
         when String
           query_string << "#{key}=#{CGI.escape value}&"
         when Array
