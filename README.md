@@ -89,6 +89,7 @@ Currently, the following APIs are supported. More will be added as Blizzard expa
  * generic Data API
  * Guild Profiles API
  * Items API
+ * Quest API
 
 Realm Status API
 ----------------
@@ -179,9 +180,19 @@ Items API
 
       api = Battlenet::API
 
-      # Requesting a guild
+      # Requesting an item
       puts api::Item.with_id(38268)
       # => {"id"=>38268, "description"=>"Give to a Friend", "name"=>"Spare Hand", "icon"=>"inv_gauntlets_09", "stackable"=>1, "itemBind"=>0, "bonusStats"=>[], "itemSpells"=>[], "buyPrice"=>12, "itemClass"=>2, "itemSubClass"=>14, "containerSlots"=>0, "weaponInfo"=>{"damage"=>[{"minDamage"=>1, "maxDamage"=>2}], "weaponSpeed"=>2.5, "dps"=>0.6}, "inventoryType"=>13, "equippable"=>true, "itemLevel"=>1, "maxCount"=>0, "maxDurability"=>16, "minFactionId"=>0, "minReputation"=>0, "quality"=>0, "sellPrice"=>2, "requiredSkill"=>0, "requiredLevel"=>70, "requiredSkillRank"=>0, "itemSource"=>{"sourceId"=>0, "sourceType"=>"NONE"}, "baseArmor"=>0, "hasSockets"=>false, "isAuctionable"=>true}
+
+Quest API
+-----------------
+
+      api = Battlenet::API
+      
+      # Requesting a quest
+      puts api::Quest.with_id(25)
+      # => {"id"=>25, "title"=>"Simmer Down Now", "reqLevel"=>23, "suggestedPartyMembers"=>0, "category"=>"Ashenvale", "level"=>25}
+
 
 Contributing
 ============
