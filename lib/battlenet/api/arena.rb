@@ -13,6 +13,12 @@ module Battlenet
       def possible_team_sizes()
         ["2v2","3v3","5v5"]
       end
+      
+      def ladder(battlegroup,teamSize,howMany=50)
+        # see: http://us.battle.net/wow/en/forum/topic/2973016101#7
+        @api.make_api_call("pvp/arena/#{battlegroup}/#{teamSize}/",{"size" => howMany})["arenateam"]
+      end
+      
     end
   end
 end
