@@ -160,8 +160,14 @@ generic Data API
       # The guild perks data API provides a list of all guild perks.
       guildperks = api::Data.guild_perks()
       
+      # lists all availeable guild achievments
+      guildachievements = api::Data.guild_achievements()
+      
       # The item classes data API provides a list of item classes.
       itemclasses = api::Data.item_classes()
+      
+      # lists all availeable achievments
+      achievements = api::Data.achievements()
 
 Guild Profiles API
 -----------------
