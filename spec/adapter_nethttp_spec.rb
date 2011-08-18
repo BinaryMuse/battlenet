@@ -5,7 +5,7 @@ describe Battlenet::Adapter::NetHTTP do
     it "uses SSL when authorization data is send" do
       headers = {"Authorization" => "some string that doesnt matter"}
       dryrequest = subject.send(:get, 'http://us.battle.net/api/wow/some/path', headers, true)
-      dryrequest.use_ssl? == true and
+      dryrequest.use_ssl? == true
     end
   end
 end
