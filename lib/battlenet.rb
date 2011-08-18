@@ -6,3 +6,5 @@ require 'battlenet/api/item'
 require 'battlenet/api/arena'
 require 'battlenet/api/data'
 require 'battlenet/api/auction'
+require 'battlenet/api/quest'
+ 
