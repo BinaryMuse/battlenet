@@ -41,6 +41,22 @@ Region
 By default, the region is set to `:us`, which corresponds to the US Battle.net API. You may set this to any symbol to force the library to use that region's API.
 
     Battlenet::API.set_option(:region, :eu)
+Possible regions are: :us, :eu, :kr, :tw, :cn.
+
+Locale
+------
+
+By default, the locale is set to `en_US`, which corresponds to american english. You may set this to other strings to force the library to use locale.
+
+    Battlenet::API.set_option(:locale, 'de_DE')
+Be aware that locales are region dependant, the default is the first locale for each region: 
+    possible_locales = {
+        :us => ["en_US","es_MX"],
+        :eu => ["en_GB","es_ES","fr_FR","ru_RU","de_DE"],
+        :kr => ["ko_kr"],
+        :tw => ["zh_TW"],
+        :cn => ["zh_CN"]
+    }
 
 HTTP Adapter
 ------------
@@ -67,24 +83,105 @@ Currently Supported APIs
 Currently, the following APIs are supported. More will be added as Blizzard expands their API library.
 
  * [Realm Status API](http://us.battle.net/wow/en/forum/topic/2369741469)
+ * Arena Teams API
+ * Auctions API
+ * Character Profiles API
+ * generic Data API
+ * Guild Profiles API
+ * Items API
 
 Realm Status API
 ----------------
 
-    api = Battlenet::API::Realm
-
-    # Getting data for all realms
-    all_realms = api.status
-    # Getting data for specific realms
-    realms     = api.status :realm => ["Nazjatar", "Shadowsong"]
-    # Getting data for one realm
-    realm      = api.status :realm => "Nazjatar"
-
-    # Getting data about a realm
-    realms.first["population"]
+     api = Battlenet::API::Realm
+     
+     # Getting data for all realms
+     all_realms = api.status
+     # Getting data for specific realms
+     realms     = api.status :realm => ["Nazjatar", "Shadowsong"]
+     # Getting data for one realm
+     realm = api.status :realm => "Nazjatar"
+     
+     # Getting data about a realm
+     realms.first["population"]
      # => "low"
-    realms.first["queue"]
+     realms.first["queue"]
      # => false
+
+Arena Teams API
+-----------------
+
+     api = Battlenet::API
+     
+     # Getting data for the team called `nas kobalsit`, which plays `2v2` on the realm `Nathrezim`
+     team = api::Arena.team("nas kolbasit","2v2","Nathrezim")
+
+Auctions API
+-----------------
+
+      api = Battlenet::API
+      
+      # Get auctions data from the realms `Nathrezim` if the auctions are newer than `0`
+      all_auctions = api::Auction.data("nathrezim", 0)
+      puts "size of Horde Auctions: #{api::Auction.Horde(all_auctions).size}"
+      # => 23573
+      puts "size of Alliance Auctions: #{api::Auction.Alliance(all_auctions).size}"
+      # => 8356
+      puts "Neutral Auctions: #{api::Auction.Neutral(all_auctions)}"
+      # => Neutral Auctions: [{"auc"=>1347115446, "item"=>10392, "owner"=>"Thalliana", "bid"=>400000, "buyout"=>500000, "quantity"=>1, "timeLeft"=>"LONG"}, ...
+
+Character Profiles API
+-----------------
+
+      api = Battlenet::API
+      
+      # Requesting mighty schaman called `Schnecke` from Realm `Nathrezim` with the additional field `guild`
+      schnecke = api::Character.profile("Schnecke","Nathrezim",["guild"])
+      
+      # List of the optional fields
+      api::Character.list_possible_fields.keys
+      # => ["guild", "stats", "talents", "items", "reputation", "titles", "professions", "appearance", "companions", "mounts", "pets", "achievements", "progression", "pvp", "quests"]
+
+generic Data API
+-----------------
+
+      api = Battlenet::API
+      
+      # The character races data API provides a list of character races.
+      characterraces = api::Data.character_races()
+      
+      # The character classes data API provides a list of character classes:
+      characterlasses = api::Data.character_classes()
+      
+      # The guild rewards data API provides a list of all guild rewards.
+      guildrewards = api::Data.guild_rewards()
+      
+      # The guild perks data API provides a list of all guild perks.
+      guildperks = api::Data.guild_perks()
+      
+      # The item classes data API provides a list of item classes.
+      itemclasses = api::Data.item_classes()
+
+Guild Profiles API
+-----------------
+
+      api = Battlenet::API
+       
+      # Requesting a guild
+      guild = api::Guild.profile("Badeverein Orgrimmar","Nathrezim",["members"])
+      
+      # List of the optional fields
+      api::Guild.list_possible_fields.keys
+      # => ["members","achievements"]
+
+Items API
+-----------------
+
+      api = Battlenet::API
+
+      # Requesting a guild
+      puts api::Item.with_id(38268)
+      # => {"id"=>38268, "description"=>"Give to a Friend", "name"=>"Spare Hand", "icon"=>"inv_gauntlets_09", "stackable"=>1, "itemBind"=>0, "bonusStats"=>[], "itemSpells"=>[], "buyPrice"=>12, "itemClass"=>2, "itemSubClass"=>14, "containerSlots"=>0, "weaponInfo"=>{"damage"=>[{"minDamage"=>1, "maxDamage"=>2}], "weaponSpeed"=>2.5, "dps"=>0.6}, "inventoryType"=>13, "equippable"=>true, "itemLevel"=>1, "maxCount"=>0, "maxDurability"=>16, "minFactionId"=>0, "minReputation"=>0, "quality"=>0, "sellPrice"=>2, "requiredSkill"=>0, "requiredLevel"=>70, "requiredSkillRank"=>0, "itemSource"=>{"sourceId"=>0, "sourceType"=>"NONE"}, "baseArmor"=>0, "hasSockets"=>false, "isAuctionable"=>true}
 
 Contributing
 ============
