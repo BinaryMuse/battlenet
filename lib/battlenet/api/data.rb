@@ -24,12 +24,20 @@ module Battlenet
         # The guild perks data API provides a list of all guild perks.
         @api.make_api_call("data/guild/perks")["perks"]
       end
-      
+
+      def guild_achievements()
+        @api.make_api_call("data/guild/achievements")["achievements"]
+      end
+
       def item_classes()
         # The item classes data API provides a list of item classes.
         @api.make_api_call("data/item/classes")["classes"]
       end
-      
+
+      def achievements()
+        @api.make_api_call("data/character/achievements")["achievements"]
+      end
+
     end
   end
 end
