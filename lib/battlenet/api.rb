@@ -65,7 +65,7 @@ module Battlenet
       path = (path.start_with?('/') ? '' : '/')+path
       url << path
       url << query_string
-      code, body = get(url,headers())
+      code, body = get(url,headers(path))
       raise APIError.new(code, body) unless code == 200
       JSON::parse body
     end
@@ -78,7 +78,7 @@ module Battlenet
       adapter.get(url,headers())
     end
 
-    def headers()
+    def headers(path = '')
       headers = {
         'User-Agent' => 'battlenet gem for Ruby'
       }
