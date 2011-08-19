@@ -18,11 +18,24 @@ module Battlenet
 
     extend self
 
+    attr_accessor :auth
+
+    @auth = nil
+
     @config = {
       :indifferent_hashes => true,
       :http_adapter       => :net_http,
-      :region             => :us
+      :region             => :us,
+      :locale             => nil
     }
+    # locales are region dependant, the default is the first locale for each region: 
+    # possible_locales = {
+    #   :us => ["en_US","es_MX"],
+    #   :eu => ["en_GB","es_ES","fr_FR","ru_RU","de_DE"],
+    #   :kr => ["ko_kr"],
+    #   :tw => ["zh_TW"],
+    #   :cn => ["zh_CN"] # battlenet.com.cn
+    # }
 
     def set_option(setting, value)
       @config[setting] = value
@@ -38,36 +51,76 @@ module Battlenet
 
     def base_url
       region = get_option(:region, :us).to_s
-      "http://#{region}.battle.net/api/wow"
+      unless region == "cn"
+        "http://#{region}.battle.net/api/wow"
+      else
+        # chinese battlenet uses another domain (see: http://us.battle.net/wow/en/forum/topic/2878487920#1)
+        "http://www.battlenet.com.cn/api/wow"
+      end
     end
 
     def make_api_call(path, query = {})
-      query_string = query.empty? ? '' : make_query_string(query)
+      puts query
+      query_string = (query.empty? and @config[:locale].nil?) ? '' : make_query_string(query)      
       url = base_url
-      url << (path.start_with?('/') ? '' : '/')
+      path = (path.start_with?('/') ? '' : '/')+path
       url << path
       url << query_string
-      code, body = get url
+      puts url
+      code, body = get(url,headers(path))
       raise APIError.new(code, body) unless code == 200
       JSON::parse body
     end
 
-    def get(url)
-      adapter.get(url)
+    def get(url, headers = {})
+      adapter.get(url,headers)
+    end
+    
+    def get_file(url, headers = {})
+      adapter.get(url,headers())
+    end
+
+    def headers(path = '')
+      headers = {
+        'User-Agent' => 'battlenet gem for Ruby'
+      }
+      unless @auth.nil?
+        headers['Authorization'] = make_auth_string("/api/wow"+path,@auth[:privKey],@auth[:pubKey])
+      end
+      headers
     end
 
     def make_query_string(query)
       query_string = "?"
       query.each do |key, value|
         case value
+        when Fixnum
+          value = value.to_s
+          query_string << "#{key}=#{CGI.escape value}&"
         when String
           query_string << "#{key}=#{CGI.escape value}&"
         when Array
           value.each { |v| query_string << "#{key}=#{CGI.escape v}&" }
         end
       end
-
+      query_string << "locale=#{CGI.escape(@config[:locale])}&" unless @config[:locale].nil?
       query_string.chomp("&").chomp("?")
     end
+
+    def make_auth_string(requestUrl,privKey,pubKey, verb = "GET")
+      # be aware that this is untested code! 
+      # I dont have a auth key pair from blizz, so I cant really test this.
+      require 'digest/sha1'
+      require 'HMAC-SHA1'
+      require 'Base64'
+
+      stringToSign = verb + "\n" +
+          CGI.rfc1123_date(Time.now) + "\n" +
+          requestUrl + "\n"
+
+      signature = Base64.encode64(HMAC::SHA1.digest(privKey.encode("utf-8"),stringToSign.encode("utf-8")))
+      "BNET" + " " + pubKey + ":" + signature
+    end
+    
   end
 end

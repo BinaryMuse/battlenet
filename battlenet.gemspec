@@ -6,11 +6,13 @@ Gem::Specification.new do |s|
   s.name        = "battlenet"
   s.version     = Battlenet::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Brandon Tilley"]
-  s.email       = ["brandon@brandontilley.com"]
-  s.homepage    = ""
+  s.authors     = ["Brandon Tilley","Espen A. Nilsen","Marv Cool"]
+  s.email       = ["brandon@brandontilley.com","post@espennilsen.net","marv@hostin.is"]
+  s.homepage    = "https://github.com/BinaryMuse/battlenet"
   s.summary     = %q{Easily consume Blizzard's Community Platform API.}
   s.description = %q{Easily consume Blizzard's Community Platform API.}
+
+  s.add_dependency "ruby-hmac"
 
   if s.respond_to?(:add_development_dependency)
     s.add_development_dependency "rspec"

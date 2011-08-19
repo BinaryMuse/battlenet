@@ -1,2 +1,10 @@
 require 'battlenet/api'
 require 'battlenet/api/realm'
+require 'battlenet/api/character'
+require 'battlenet/api/guild'
+require 'battlenet/api/item'
+require 'battlenet/api/arena'
+require 'battlenet/api/data'
+require 'battlenet/api/auction'
+require 'battlenet/api/quest'
+ 

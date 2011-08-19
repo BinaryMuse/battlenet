@@ -3,7 +3,7 @@ module Battlenet
     class NotImplementedException < Exception; end
 
     class AbstractAdapter
-      def get(url)
+      def get(url,headers={})
         raise NotImplementedException.new("Please implement #get in your adapter")
       end
     end
