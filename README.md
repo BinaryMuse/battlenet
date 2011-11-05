@@ -17,74 +17,45 @@ Battlenet is available as a Ruby gem. Install it via
 Use
 ===
 
-In general, the API is split into several sub-modules, each corresponding to an entity in Blizzard's API. For example, methods for using the Realm Status API are located in the module `Battlenet::API::Realm`. Methods on the module allow you to fetch certain information about the given entity. Arguments passed to the methods allow you to specify query string parameters. As an example, here are some sample API calls and the URLs they translate into.
+Simply create an instance of `Battlenet`, passing in an optional region as a symbol (defaulting to US), and then optionally a public and private key (for app authorization).
 
-    Battlenet::API::Realm.status
-     # => "http://us.battle.net/api/wow/realm/status"
-    Battlenet::API::Realm.status :realm => "Nazjatar"
-     # => "http://us.battle.net/api/wow/realm/status?realm=Nazjatar"
-    Battlenet::API::Realm.status :realm => ["Nazjatar", "Shadowsong"]
-     # => "http://us.battle.net/api/wow/realm/status?realm=Nazjatar&realm=Shadowsong"
+Default options:
 
-Calls to the methods return an array of Hashes, and each hash contains the data for the queried resources.
+    api = Battlenet.new
 
-**Note**: This is all subject to change depending on how Blizzard architects the rest of their API.
+Specifying a region:
 
-Configuration
-=============
+    api = Battlenet.new :eu
 
-You may pass multiple options to Battlenet to change its behavior.
+Specifying a public and private key:
 
-Region
-------
+    api = Battlenet.new :us, 'public', 'private'
 
-By default, the region is set to `:us`, which corresponds to the US Battle.net API. You may set this to any symbol to force the library to use that region's API.
+Battlenet is backed by the excellent [HTTParty gem](https://github.com/jnunemaker/httparty), which means you can make get requests very simply.
 
-    Battlenet::API.set_option(:region, :eu)
+    api.get '/item/12784'
 
-HTTP Adapter
-------------
+Battlenet also provides modules for each section of the API, providing easy access to the resources.
 
-Battlenet supports multiple adapters for fetching API data over the Internet. By default, it uses Ruby's built-in `Net::HTTP` library. If you wish to use a different adapter, specify it like this:
+    api.item '12784'
+    api.character 'Nazjatar', 'Cyaga', :fields => ["stats", "talents", "quests"]
 
-    Battlenet::API.set_option(:http_adapter, :typhoeus)
+Configuring
+===========
 
-The following adapters are currently supported (more may be added later):
-
-* `:net_http` - Ruby's `Net::HTTP` library
-* `:typhoeus` - [Typhoeus](https://github.com/dbalatero/typhoeus)
-
-Note that the adapter must be set before any API calls are made.
-
-
-### Creating an Adapter
-
-If you wish to, you can create your own adapters. See the [Creating an Adapter wiki page](https://github.com/BinaryMuse/battlenet/wiki/Creating-an-Adapter) for more details.
-
-Currently Supported APIs
-========================
-
-Currently, the following APIs are supported. More will be added as Blizzard expands their API library.
-
- * [Realm Status API](http://us.battle.net/wow/en/forum/topic/2369741469)
-
-Realm Status API
+Failing Silently
 ----------------
 
-    api = Battlenet::API::Realm
+By default, if Battlenet receives a non-200 response from the Battle.net API, it will throw an exception. You can turn this behavior off via the `fail_silently` attribute:
 
-    # Getting data for all realms
-    all_realms = api.status
-    # Getting data for specific realms
-    realms     = api.status :realm => ["Nazjatar", "Shadowsong"]
-    # Getting data for one realm
-    realm      = api.status :realm => "Nazjatar"
+    Battlenet.fail_silently = true
 
-    # Getting data about a realm
-    realms.first["population"]
-     # => "low"
-    realms.first["queue"]
-     # => false
+Localization
+------------
+
+The Battle.net API supports localization via a query string parameter. Battlenet can transparently handle setting this parameter for you on every request. Just set the `localization` attribute:
+
+    Battlenet.localization = "en_GB"
 
 Contributing
 ============
