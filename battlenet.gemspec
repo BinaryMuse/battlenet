@@ -12,8 +12,10 @@ Gem::Specification.new do |s|
   s.summary     = %q{Easily consume Blizzard's Community Platform API.}
   s.description = %q{Easily consume Blizzard's Community Platform API.}
 
-  if s.respond_to?(:add_development_dependency)
-    s.add_development_dependency "rspec"
+  if s.respond_to?(:add_runtime_dependency)
+    s.add_runtime_dependency "httparty"
+  else
+    s.add_dependency "httparty"
   end
 
   s.files         = `git ls-files`.split("\n")
