@@ -85,13 +85,15 @@ describe Battlenet do
     end
 
     context "when the response does not have a 200 status code" do
+      before(:each) do
+        response = mock(:response).as_null_object
+        response.should_receive(:code).at_least(:once).and_return(500)
+        Battlenet.should_receive(:get).and_return(response)
+      end
+
       context "when fail_silently is off" do
         before(:each) do
           Battlenet.fail_silently = false
-
-          response = mock(:response).as_null_object
-          response.should_receive(:code).at_least(:once).and_return(500)
-          Battlenet.should_receive(:get).and_return(response)
         end
 
         it "throws an exception" do
