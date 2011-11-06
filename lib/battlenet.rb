@@ -1,11 +1,23 @@
 require 'httparty'
 require 'battlenet/authentication'
 require 'battlenet/modules/character'
+require 'battlenet/modules/guild'
+require 'battlenet/modules/realm'
+require 'battlenet/modules/auction'
+require 'battlenet/modules/item'
+require 'battlenet/modules/arena'
+require 'battlenet/modules/data'
 
 class Battlenet
   include HTTParty
 
   include Battlenet::Character
+  include Battlenet::Guild
+  include Battlenet::Realm
+  include Battlenet::Auction
+  include Battlenet::Item
+  include Battlenet::Arena
+  include Battlenet::Data
 
   class << self
     attr_accessor :fail_silently

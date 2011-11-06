@@ -17,6 +17,8 @@ Gem::Specification.new do |s|
     s.add_development_dependency "rake"
     s.add_development_dependency "rspec"
     s.add_development_dependency "timecop"
+    s.add_development_dependency "vcr"
+    s.add_development_dependency "webmock"
   end
 
   if s.respond_to?(:add_runtime_dependency)
