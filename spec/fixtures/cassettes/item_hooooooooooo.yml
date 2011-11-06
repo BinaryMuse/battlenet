@@ -1,0 +1,29 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://us.battle.net:80/api/wow/item/12784
+    body: 
+    headers: 
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Sun, 06 Nov 2011 01:06:08 GMT
+      server:
+      - Apache
+      x-frame-options:
+      - SAMEORIGIN
+      content-language:
+      - en-US
+      content-length:
+      - '726'
+      vary:
+      - Accept-Encoding
+      content-type:
+      - application/json;charset=utf-8
+    body: ! '{"id":12784,"disenchantingSkillRank":225,"description":"","name":"Arcanite
+      Reaper","icon":"inv_axe_09","stackable":1,"itemBind":2,"bonusStats":[{"stat":38,"amount":62,"reforged":false},{"stat":7,"amount":13,"reforged":false}],"itemSpells":[],"buyPrice":328683,"itemClass":2,"itemSubClass":1,"containerSlots":0,"weaponInfo":{"damage":{"min":153,"max":256},"weaponSpeed":3.8,"dps":53.81579},"inventoryType":17,"equippable":true,"itemLevel":63,"maxCount":0,"maxDurability":100,"minFactionId":0,"minReputation":0,"quality":3,"sellPrice":65736,"requiredSkill":0,"requiredLevel":58,"requiredSkillRank":0,"itemSource":{"sourceId":16994,"sourceType":"CREATED_BY_SPELL"},"baseArmor":0,"hasSockets":false,"isAuctionable":true,"armor":0}'
+    http_version: '1.1'

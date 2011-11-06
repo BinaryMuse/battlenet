@@ -1,0 +1,48 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://us.battle.net:80/api/wow/character/nazjatar/mortawa?fields=talents&locale=es_ES
+    body: 
+    headers: 
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Sun, 06 Nov 2011 01:18:38 GMT
+      server:
+      - Apache
+      x-frame-options:
+      - SAMEORIGIN
+      last-modified:
+      - Sat, 05 Nov 2011 05:34:29 GMT
+      content-language:
+      - es-MX
+      content-length:
+      - '2612'
+      vary:
+      - Accept-Encoding
+      content-type:
+      - application/json;charset=utf-8
+    body: ! '{"lastModified":1320471269000,"name":"Mortawa","realm":"Nazjatar","class":6,"race":6,"gender":0,"level":85,"achievementPoints":4630,"thumbnail":"nazjatar/110/44339054-avatar.jpg","talents":[{"selected":true,"name":"Sangre","icon":"spell_deathknight_bloodpresence","build":"033222001322223113013200100000000000000000200000000000000000","trees":[{"points":"03322200132222311301","total":33},{"points":"32001000000000000000","total":6},{"points":"00200000000000000000","total":2}],"glyphs":{"prime":[{"glyph":528,"item":43550,"name":"Glifo
+      de Golpe con runa","icon":"spell_deathknight_darkconviction"},{"glyph":558,"item":43827,"name":"Glifo
+      de Golpe letal","icon":"spell_deathknight_butcher2"},{"glyph":513,"item":43534,"name":"Glifo
+      de Golpe en el corazón","icon":"inv_weapon_shortblade_40"}],"major":[{"glyph":515,"item":43536,"name":"Glifo
+      de Escudo óseo","icon":"ability_deathknight_boneshield"},{"glyph":556,"item":43825,"name":"Glifo
+      de Transfusión de runa","icon":"spell_deathknight_runetap"},{"glyph":768,"item":45799,"name":"Glifo
+      de Arma de runa danzante","icon":"inv_sword_07"}],"minor":[{"glyph":522,"item":43544,"name":"Glifo
+      de Cuerno de invierno","icon":"inv_misc_horn_02"},{"glyph":553,"item":43672,"name":"Glifo
+      de Atracción pertinaz","icon":"spell_deathknight_strangulate"},{"glyph":514,"item":43535,"name":"Glifo
+      de Transfusión de sangre","icon":"spell_deathknight_bloodtap"}]}},{"name":"Profano","icon":"spell_deathknight_unholypresence","build":"203000000000000000000000000000000000000023322321230031021231","trees":[{"points":"20300000000000000000","total":5},{"points":"00000000000000000000","total":0},{"points":"23322321230031021231","total":36}],"glyphs":{"prime":[{"glyph":529,"item":43551,"name":"Glifo
+      de Golpe de la Plaga","icon":"spell_deathknight_scourgestrike"},{"glyph":771,"item":45804,"name":"Glifo
+      de Espiral de la muerte","icon":"spell_shadow_deathcoil"},{"glyph":527,"item":43549,"name":"Glifo
+      de Levantar a muerto","icon":"spell_shadow_animatedead"}],"major":[{"glyph":512,"item":43533,"name":"Glifo
+      de Caparazón antimagia","icon":"spell_shadow_antimagicshell"},{"glyph":530,"item":43552,"name":"Glifo
+      de Estrangular","icon":"spell_shadow_soulleech_3"},{"glyph":519,"item":43541,"name":"Glifo
+      de Atracción letal","icon":"spell_deathknight_strangulate"}],"minor":[{"glyph":553,"item":43672,"name":"Glifo
+      de Atracción pertinaz","icon":"spell_deathknight_strangulate"},{"glyph":555,"item":43673,"name":"Glifo
+      de Portón de la muerte","icon":"spell_arcane_teleportundercity"},{"glyph":522,"item":43544,"name":"Glifo
+      de Cuerno de invierno","icon":"inv_misc_horn_02"}]}}]}'
+    http_version: '1.1'

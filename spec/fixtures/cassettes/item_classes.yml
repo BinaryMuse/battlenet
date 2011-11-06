@@ -1,0 +1,33 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://us.battle.net:80/api/wow/data/item/classes
+    body: 
+    headers: 
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Sun, 06 Nov 2011 01:08:55 GMT
+      server:
+      - Apache
+      x-frame-options:
+      - SAMEORIGIN
+      expires:
+      - Tue, 06 Dec 2011 01:08:55 GMT
+      cache-control:
+      - max-age=2592000
+      content-language:
+      - en-US
+      content-length:
+      - '425'
+      vary:
+      - Accept-Encoding
+      content-type:
+      - application/json;charset=utf-8
+    body: ! '{"classes":[{"class":0,"name":"Consumable"},{"class":1,"name":"Container"},{"class":2,"name":"Weapon"},{"class":3,"name":"Gem"},{"class":4,"name":"Armor"},{"class":5,"name":"Reagent"},{"class":6,"name":"Projectile"},{"class":7,"name":"Trade
+      Goods"},{"class":9,"name":"Recipe"},{"class":11,"name":"Quiver"},{"class":12,"name":"Quest"},{"class":13,"name":"Key"},{"class":15,"name":"Miscellaneous"},{"class":16,"name":"Glyph"}]}'
+    http_version: '1.1'

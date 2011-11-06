@@ -1,0 +1,30 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://us.battle.net:80/api/wow/character/nazjatar/mortawa
+    body: 
+    headers: 
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Sun, 06 Nov 2011 00:30:35 GMT
+      server:
+      - Apache
+      x-frame-options:
+      - SAMEORIGIN
+      last-modified:
+      - Sat, 05 Nov 2011 05:34:29 GMT
+      content-language:
+      - en-US
+      content-length:
+      - '179'
+      vary:
+      - Accept-Encoding
+      content-type:
+      - application/json;charset=utf-8
+    body: ! '{"lastModified":1320471269000,"name":"Mortawa","realm":"Nazjatar","class":6,"race":6,"gender":0,"level":85,"achievementPoints":4630,"thumbnail":"nazjatar/110/44339054-avatar.jpg"}'
+    http_version: '1.1'

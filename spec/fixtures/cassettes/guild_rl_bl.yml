@@ -1,0 +1,28 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://us.battle.net:80/api/wow/guild/nazjatar/RL%20BL
+    body: 
+    headers: 
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Sun, 06 Nov 2011 00:44:00 GMT
+      server:
+      - Apache
+      x-frame-options:
+      - SAMEORIGIN
+      content-language:
+      - en-US
+      content-length:
+      - '218'
+      vary:
+      - Accept-Encoding
+      content-type:
+      - application/json;charset=utf-8
+    body: ! '{"lastModified":1320538721000,"name":"RL BL","realm":"Nazjatar","level":25,"side":1,"achievementPoints":970,"emblem":{"icon":122,"iconColor":"ffb1b8b1","border":5,"borderColor":"ffffffff","backgroundColor":"ff009061"}}'
+    http_version: '1.1'

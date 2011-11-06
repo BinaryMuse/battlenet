@@ -1,0 +1,33 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://us.battle.net:80/api/wow/data/character/classes
+    body: 
+    headers: 
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Sun, 06 Nov 2011 01:08:55 GMT
+      server:
+      - Apache
+      x-frame-options:
+      - SAMEORIGIN
+      expires:
+      - Tue, 06 Dec 2011 01:08:55 GMT
+      cache-control:
+      - max-age=2592000
+      content-language:
+      - en-US
+      content-length:
+      - '569'
+      vary:
+      - Accept-Encoding
+      content-type:
+      - application/json;charset=utf-8
+    body: ! '{"classes":[{"id":3,"mask":4,"powerType":"focus","name":"Hunter"},{"id":4,"mask":8,"powerType":"energy","name":"Rogue"},{"id":1,"mask":1,"powerType":"rage","name":"Warrior"},{"id":2,"mask":2,"powerType":"mana","name":"Paladin"},{"id":7,"mask":64,"powerType":"mana","name":"Shaman"},{"id":8,"mask":128,"powerType":"mana","name":"Mage"},{"id":5,"mask":16,"powerType":"mana","name":"Priest"},{"id":6,"mask":32,"powerType":"runic-power","name":"Death
+      Knight"},{"id":11,"mask":1024,"powerType":"mana","name":"Druid"},{"id":9,"mask":256,"powerType":"mana","name":"Warlock"}]}'
+    http_version: '1.1'

@@ -1,0 +1,91 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://us.battle.net:80/api/wow/data/guild/perks
+    body: 
+    headers: 
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Sun, 06 Nov 2011 01:08:55 GMT
+      server:
+      - Apache
+      x-frame-options:
+      - SAMEORIGIN
+      expires:
+      - Tue, 06 Dec 2011 01:08:55 GMT
+      cache-control:
+      - max-age=2592000
+      content-language:
+      - en-US
+      content-length:
+      - '5584'
+      vary:
+      - Accept-Encoding
+      content-type:
+      - application/json;charset=utf-8
+    body: ! '{"perks":[{"guildLevel":2,"spell":{"id":78631,"name":"Fast Track","subtext":"Rank
+      1","icon":"achievement_guildperk_fasttrack","description":"Experience gained
+      from killing monsters and completing quests increased by 5%."}},{"guildLevel":3,"spell":{"id":78633,"name":"Mount
+      Up","icon":"achievement_guildperk_mountup","description":"Increases speed while
+      mounted by 10%.  Not active in Battlegrounds or Arenas."}},{"guildLevel":4,"spell":{"id":78634,"name":"Mr.
+      Popularity","subtext":"Rank 1","icon":"achievement_guildperk_mrpopularity","description":"Reputation
+      gained from killing monsters and completing quests increased by 5%."}},{"guildLevel":5,"spell":{"id":83940,"name":"Cash
+      Flow","subtext":"Rank 1","icon":"achievement_guildperk_cashflow","description":"Each
+      time you loot money from an enemy, an extra 5% money is generated and deposited
+      directly into your guild bank.  In addition, completing guild challenges will
+      reward gold directly to your guild bank."}},{"guildLevel":6,"spell":{"id":78632,"name":"Fast
+      Track","subtext":"Rank 2","icon":"achievement_guildperk_fasttrack_rank2","description":"Experience
+      gained from killing monsters and completing quests increased by 10%."}},{"guildLevel":7,"spell":{"id":83942,"name":"Reinforce","subtext":"Rank
+      1","icon":"achievement_guildperk_reinforce","description":"Items take 10% less
+      durability loss when you die."}},{"guildLevel":8,"spell":{"id":83944,"name":"Hasty
+      Hearth","icon":"achievement_guildperk_hastyhearth","description":"Reduces the
+      cooldown on your Hearthstone by 15 minutes."}},{"guildLevel":9,"spell":{"id":83943,"name":"Reinforce","subtext":"Rank
+      2","icon":"achievement_guildperk_reinforce_rank2","description":"Items take
+      20% less durability loss when you die."}},{"guildLevel":10,"spell":{"id":83945,"name":"Chug-A-Lug","subtext":"Rank
+      1","icon":"achievement_guildperk_chugalug","description":"The duration of buffs
+      from all guild cauldrons is increased by 50%."}},{"guildLevel":11,"spell":{"id":83958,"name":"Mobile
+      Banking","icon":"achievement_guildperk_mobilebanking","description":"Summons
+      a Guild Chest that allows access to your guild bank for 5 min.  Only guild members
+      with guild reputation of friendly and above are allowed to use a Guild Chest.","castTime":"3
+      sec cast","cooldown":"60 min cooldown"}},{"guildLevel":12,"spell":{"id":78635,"name":"Mr.
+      Popularity","subtext":"Rank 2","icon":"achievement_guildperk_mrpopularity_rank2","description":"Reputation
+      gained from killing monsters and completing quests increased by 10%."}},{"guildLevel":13,"spell":{"id":83959,"name":"Honorable
+      Mention","subtext":"Rank 1","icon":"achievement_guildperk_honorablemention","description":"Increases
+      Honor points gained by 5%."}},{"guildLevel":14,"spell":{"id":83949,"name":"Working
+      Overtime","icon":"achievement_guildperk_workingovertime","description":"Increases
+      the chance to gain a skill increase on tradeskills by 10%."}},{"guildLevel":15,"spell":{"id":83950,"name":"The
+      Quick and the Dead","icon":"achievement_guildperk_quickanddead","description":"Increases
+      health gained when resurrected by a guild member by 50% and increases movement
+      speed while dead by 100%.  Does not function in combat or while in a Battleground
+      or Arena."}},{"guildLevel":16,"spell":{"id":83941,"name":"Cash Flow","subtext":"Rank
+      2","icon":"achievement_guildperk_cashflow_rank2","description":"Each time you
+      loot money from an enemy, an extra 10% money is generated and deposited directly
+      into your guild bank."}},{"guildLevel":17,"spell":{"id":83951,"name":"G-Mail","icon":"achievement_guildperk_gmail","description":"In-game
+      mail sent between guild members now arrives instantly."}},{"guildLevel":18,"spell":{"id":83953,"name":"For
+      Great Justice","icon":"achievement_guildperk_everyonesahero","description":"Increases
+      Justice points gained by 10%."}},{"guildLevel":19,"spell":{"id":83960,"name":"Honorable
+      Mention","subtext":"Rank 2","icon":"achievement_guildperk_honorablemention_rank2","description":"Increases
+      Honor points gained by 10%."}},{"guildLevel":20,"spell":{"id":83963,"name":"Happy
+      Hour","icon":"achievement_guildperk_happyhour","description":"Increases the
+      number of flasks gained from using a flask cauldron by 50%."}},{"guildLevel":21,"spell":{"id":83967,"name":"Have
+      Group, Will Travel","icon":"achievement_guildperk_havegroupwilltravel","description":"Summons
+      all raid or party members to the caster''s current location. Cannot be used
+      while in combat, and can only be cast while in the outdoor world or near the
+      entrance of a dungeon or raid.","range":"50,000 yd range","castTime":"Channeled","cooldown":"120
+      min cooldown"}},{"guildLevel":22,"spell":{"id":83961,"name":"Chug-A-Lug","subtext":"Rank
+      2","icon":"achievement_guildperk_chugalug_rank2","description":"The duration
+      of buffs from all guild cauldrons is increased by 100%."}},{"guildLevel":23,"spell":{"id":83966,"name":"Bountiful
+      Bags","icon":"achievement_guildperk_bountifulbags","description":"Increases
+      the quantity of materials gained from Mining, Skinning, Herbalism, and Disenchanting."}},{"guildLevel":24,"spell":{"id":83964,"name":"Bartering","icon":"achievement_guildperk_bartering","description":"Reduces
+      the price of items from all vendors by 10%."}},{"guildLevel":25,"spell":{"id":83968,"name":"Mass
+      Resurrection","icon":"achievement_guildperk_massresurrection","description":"Brings
+      all dead party and raid members back to life with 35% health and 35% mana.  A
+      player may only be resurrected by this spell once every 10 minutes.  Cannot
+      be cast in combat or while in a battleground or arena.","range":"100 yd range","castTime":"10
+      sec cast"}}]}'
+    http_version: '1.1'

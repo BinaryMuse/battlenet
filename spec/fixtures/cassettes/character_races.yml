@@ -1,0 +1,34 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://us.battle.net:80/api/wow/data/character/races
+    body: 
+    headers: 
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Sun, 06 Nov 2011 01:08:55 GMT
+      server:
+      - Apache
+      x-frame-options:
+      - SAMEORIGIN
+      expires:
+      - Tue, 06 Dec 2011 01:08:55 GMT
+      cache-control:
+      - max-age=2592000
+      content-language:
+      - en-US
+      content-length:
+      - '638'
+      vary:
+      - Accept-Encoding
+      content-type:
+      - application/json;charset=utf-8
+    body: ! '{"races":[{"id":3,"mask":4,"side":"alliance","name":"Dwarf"},{"id":6,"mask":32,"side":"horde","name":"Tauren"},{"id":5,"mask":16,"side":"horde","name":"Undead"},{"id":2,"mask":2,"side":"horde","name":"Orc"},{"id":7,"mask":64,"side":"alliance","name":"Gnome"},{"id":8,"mask":128,"side":"horde","name":"Troll"},{"id":9,"mask":256,"side":"horde","name":"Goblin"},{"id":11,"mask":1024,"side":"alliance","name":"Draenei"},{"id":22,"mask":2097152,"side":"alliance","name":"Worgen"},{"id":10,"mask":512,"side":"horde","name":"Blood
+      Elf"},{"id":1,"mask":1,"side":"alliance","name":"Human"},{"id":4,"mask":8,"side":"alliance","name":"Night
+      Elf"}]}'
+    http_version: '1.1'

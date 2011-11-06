@@ -1,0 +1,30 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://us.battle.net:80/api/wow/character/nazjatar/Hik%C3%B4
+    body: 
+    headers: 
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Sun, 06 Nov 2011 00:49:43 GMT
+      server:
+      - Apache
+      x-frame-options:
+      - SAMEORIGIN
+      last-modified:
+      - Mon, 31 Oct 2011 17:22:40 GMT
+      content-language:
+      - en-US
+      content-length:
+      - '178'
+      vary:
+      - Accept-Encoding
+      content-type:
+      - application/json;charset=utf-8
+    body: ! '{"lastModified":1320081760000,"name":"Hikô","realm":"Nazjatar","class":2,"race":10,"gender":0,"level":85,"achievementPoints":5130,"thumbnail":"nazjatar/156/32983708-avatar.jpg"}'
+    http_version: '1.1'

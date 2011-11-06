@@ -1,0 +1,30 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://us.battle.net:80/api/wow/auction/data/nazjatar
+    body: 
+    headers: 
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Sun, 06 Nov 2011 01:01:06 GMT
+      server:
+      - Apache
+      x-frame-options:
+      - SAMEORIGIN
+      last-modified:
+      - Sun, 06 Nov 2011 00:11:45 GMT
+      content-language:
+      - en-US
+      content-length:
+      - '107'
+      vary:
+      - Accept-Encoding
+      content-type:
+      - application/json;charset=utf-8
+    body: ! '{"files":[{"url":"http://us.battle.net/auction-data/nazjatar/auctions.json","lastModified":1320538305000}]}'
+    http_version: '1.1'

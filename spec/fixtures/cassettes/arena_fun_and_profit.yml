@@ -1,0 +1,29 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://us.battle.net:80/api/wow/arena/nazjatar/2v2/Fun%20And%20Profit
+    body: 
+    headers: 
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Sun, 06 Nov 2011 00:52:47 GMT
+      server:
+      - Apache
+      x-frame-options:
+      - SAMEORIGIN
+      content-language:
+      - en-US
+      content-length:
+      - '1208'
+      vary:
+      - Accept-Encoding
+      content-type:
+      - application/json;charset=utf-8
+    body: ! '{"realm":"Nazjatar","ranking":15762,"rating":664,"teamsize":2,"created":"2011-10-09","name":"Fun
+      And Profit","gamesPlayed":0,"gamesWon":0,"gamesLost":0,"sessionGamesPlayed":23,"sessionGamesWon":7,"sessionGamesLost":16,"lastSessionRanking":0,"side":"horde","currentWeekRanking":15762,"members":[{"character":{"name":"Swindleshank","realm":"Nazjatar","class":4,"race":9,"gender":1,"level":85,"achievementPoints":8320,"thumbnail":"nazjatar/113/83545457-avatar.jpg"},"rank":0,"gamesPlayed":0,"gamesWon":0,"gamesLost":0,"sessionGamesPlayed":23,"sessionGamesWon":7,"sessionGamesLost":16,"personalRating":664},{"character":{"name":"Badas","realm":"Nazjatar","class":1,"race":6,"gender":0,"level":85,"achievementPoints":9530,"thumbnail":"nazjatar/147/14376083-avatar.jpg"},"rank":1,"gamesPlayed":0,"gamesWon":0,"gamesLost":0,"sessionGamesPlayed":13,"sessionGamesWon":3,"sessionGamesLost":10,"personalRating":663},{"character":{"name":"Karashka","realm":"Nazjatar","class":4,"race":2,"gender":1,"level":85,"achievementPoints":1840,"thumbnail":"nazjatar/13/83545357-avatar.jpg"},"rank":1,"gamesPlayed":0,"gamesWon":0,"gamesLost":0,"sessionGamesPlayed":9,"sessionGamesWon":4,"sessionGamesLost":5,"personalRating":384}]}'
+    http_version: '1.1'

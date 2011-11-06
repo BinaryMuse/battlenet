@@ -1,0 +1,175 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://us.battle.net:80/api/wow/data/guild/rewards
+    body: 
+    headers: 
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Sun, 06 Nov 2011 01:08:55 GMT
+      server:
+      - Apache
+      x-frame-options:
+      - SAMEORIGIN
+      expires:
+      - Tue, 06 Dec 2011 01:08:55 GMT
+      cache-control:
+      - max-age=2592000
+      content-language:
+      - en-US
+      vary:
+      - Accept-Encoding
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/json;charset=utf-8
+    body: ! '{"rewards":[{"minGuildLevel":0,"minGuildRepLevel":6,"races":[6,5,2,8,9,10],"achievement":{"id":5035,"title":"Master
+      Crafter","points":10,"description":"Craft 500 Epic items with an item level
+      of at least 359.","reward":"Reward: Cloak of Coordination","rewardItem":{"id":65360,"name":"Cloak
+      of Coordination","icon":"inv_guild_cloak_alliance_c","quality":4,"tooltipParams":{}}},"item":{"id":65274,"name":"Cloak
+      of Coordination","icon":"inv_guild_cloak_horde_c","quality":4,"tooltipParams":{}}},{"minGuildLevel":0,"minGuildRepLevel":6,"races":[3,7,11,22,1,4],"achievement":{"id":5035,"title":"Master
+      Crafter","points":10,"description":"Craft 500 Epic items with an item level
+      of at least 359.","reward":"Reward: Cloak of Coordination","rewardItem":{"id":65360,"name":"Cloak
+      of Coordination","icon":"inv_guild_cloak_alliance_c","quality":4,"tooltipParams":{}}},"item":{"id":65360,"name":"Cloak
+      of Coordination","icon":"inv_guild_cloak_alliance_c","quality":4,"tooltipParams":{}}},{"minGuildLevel":0,"minGuildRepLevel":5,"achievement":{"id":5024,"title":"Better
+      Leveling Through Chemistry","points":10,"description":"Create 3,000 Cataclysm
+      flasks.","reward":"Reward: Big Cauldron of Battle (Recipe)","rewardItem":{"id":65498,"name":"Recipe:
+      Big Cauldron of Battle","icon":"inv_scroll_04","quality":1,"tooltipParams":{}}},"item":{"id":65498,"name":"Recipe:
+      Big Cauldron of Battle","icon":"inv_scroll_04","quality":1,"tooltipParams":{}}},{"minGuildLevel":0,"minGuildRepLevel":7,"races":[6,5,2,8,9,10],"achievement":{"id":5492,"title":"Guild
+      Level 25","points":10,"description":"Reach guild level 25.","reward":"Reward:
+      Reins of the Kor''kron Annihilator","rewardItem":{"id":67107,"name":"Reins of
+      the Kor''kron Annihilator","icon":"inv_mount_hordescorpiong","quality":4,"tooltipParams":{}}},"item":{"id":67107,"name":"Reins
+      of the Kor''kron Annihilator","icon":"inv_mount_hordescorpiong","quality":4,"tooltipParams":{}}},{"minGuildLevel":0,"minGuildRepLevel":5,"achievement":{"id":5036,"title":"That''s
+      A Lot of Bait","points":10,"description":"Catch 10,000 fish from fishing pools.","reward":"Reward:
+      Seafood Magnifique Feast (Recipe)","rewardItem":{"id":62800,"name":"Recipe:
+      Seafood Magnifique Feast","icon":"inv_scroll_05","quality":3,"tooltipParams":{}}},"item":{"id":62800,"name":"Recipe:
+      Seafood Magnifique Feast","icon":"inv_scroll_05","quality":3,"tooltipParams":{}}},{"minGuildLevel":0,"minGuildRepLevel":5,"achievement":{"id":5467,"title":"Set
+      the Oven to \"Cataclysmic\"","points":10,"description":"Cook 5,000 Cataclysm
+      cooking recipes. ","reward":"Reward: Broiled Dragon Feast (Recipe)","rewardItem":{"id":62799,"name":"Recipe:
+      Broiled Dragon Feast","icon":"inv_scroll_05","quality":3,"tooltipParams":{}}},"item":{"id":62799,"name":"Recipe:
+      Broiled Dragon Feast","icon":"inv_scroll_05","quality":3,"tooltipParams":{}}},{"minGuildLevel":0,"minGuildRepLevel":5,"races":[6,5,2,8,9,10],"achievement":{"id":4989,"title":"A
+      Class Act","points":10,"description":"Reach level 85 on each of the classes
+      listed below.","reward":"Reward: Shroud of Cooperation","rewardItem":{"id":63352,"name":"Shroud
+      of Cooperation","icon":"inv_guild_cloak_alliance_a","quality":2,"tooltipParams":{}}},"item":{"id":63353,"name":"Shroud
+      of Cooperation","icon":"inv_guild_cloak_horde_a","quality":2,"tooltipParams":{}}},{"minGuildLevel":0,"minGuildRepLevel":5,"races":[3,7,11,22,1,4],"achievement":{"id":4989,"title":"A
+      Class Act","points":10,"description":"Reach level 85 on each of the classes
+      listed below.","reward":"Reward: Shroud of Cooperation","rewardItem":{"id":63352,"name":"Shroud
+      of Cooperation","icon":"inv_guild_cloak_alliance_a","quality":2,"tooltipParams":{}}},"item":{"id":63352,"name":"Shroud
+      of Cooperation","icon":"inv_guild_cloak_alliance_a","quality":2,"tooltipParams":{}}},{"minGuildLevel":0,"minGuildRepLevel":5,"races":[3,7,11,22,1,4],"achievement":{"id":4945,"title":"Guild
+      Level 15","points":10,"description":"Reach guild level 15.","reward":"Reward:
+      Wrap of Unity","rewardItem":{"id":63207,"name":"Wrap of Unity","icon":"inv_guild_cloak_horde_b","quality":3,"tooltipParams":{}}},"item":{"id":63206,"name":"Wrap
+      of Unity","icon":"inv_guild_cloak_alliance_b","quality":3,"tooltipParams":{}}},{"minGuildLevel":0,"minGuildRepLevel":5,"races":[6,5,2,8,9,10],"achievement":{"id":4945,"title":"Guild
+      Level 15","points":10,"description":"Reach guild level 15.","reward":"Reward:
+      Wrap of Unity","rewardItem":{"id":63207,"name":"Wrap of Unity","icon":"inv_guild_cloak_horde_b","quality":3,"tooltipParams":{}}},"item":{"id":63207,"name":"Wrap
+      of Unity","icon":"inv_guild_cloak_horde_b","quality":3,"tooltipParams":{}}},{"minGuildLevel":0,"minGuildRepLevel":6,"races":[6,5,2,8,9,10],"achievement":{"id":5201,"title":"Profit
+      Sharing","points":10,"description":"Loot 100,000 gold from creatures.","reward":"Reward:
+      Guild Herald","rewardItem":{"id":65363,"name":"Guild Herald","icon":"achievement_guildperk_honorablemention_rank2","quality":3,"tooltipParams":{}}},"item":{"id":65364,"name":"Guild
+      Herald","icon":"achievement_guildperk_honorablemention_rank2","quality":3,"tooltipParams":{}}},{"minGuildLevel":0,"minGuildRepLevel":5,"races":[6,5,2,8,9,10],"achievement":{"id":5179,"title":"Alliance
+      Slayer","points":10,"description":"Complete the slayer achievements listed below.","reward":"Reward:
+      Guild Page","rewardItem":{"id":65362,"name":"Guild Page","icon":"achievement_guildperk_honorablemention","quality":3,"tooltipParams":{}}},"item":{"id":65362,"name":"Guild
+      Page","icon":"achievement_guildperk_honorablemention","quality":3,"tooltipParams":{}}},{"minGuildLevel":0,"minGuildRepLevel":7,"achievement":{"id":5812,"title":"United
+      Nations","points":0,"description":"Raise 55 reputations to Exalted.","reward":"Reward:
+      Dark Phoenix Hatchling","rewardItem":{"id":63138,"name":"Dark Phoenix Hatchling","icon":"inv_misc_darkphoenixpet_01","quality":3,"tooltipParams":{}}},"item":{"id":63138,"name":"Dark
+      Phoenix Hatchling","icon":"inv_misc_darkphoenixpet_01","quality":3,"tooltipParams":{}}},{"minGuildLevel":0,"minGuildRepLevel":7,"races":[3,7,11,22,1,4],"achievement":{"id":4912,"title":"Guild
+      Level 25","points":10,"description":"Reach guild level 25.","reward":"Reward:
+      Reins of the Golden King","rewardItem":{"id":62298,"name":"Reins of the Golden
+      King","icon":"inv_mount_allianceliong","quality":4,"tooltipParams":{}}},"item":{"id":62298,"name":"Reins
+      of the Golden King","icon":"inv_mount_allianceliong","quality":4,"tooltipParams":{}}},{"minGuildLevel":0,"minGuildRepLevel":7,"achievement":{"id":4988,"title":"Guild
+      Glory of the Cataclysm Raider","points":10,"description":"Complete the Cataclysm
+      raid achievements listed below while in a guild group.","reward":"Reward: Reins
+      of the Dark Phoenix","rewardItem":{"id":63125,"name":"Reins of the Dark Phoenix","icon":"inv_mount_darkphoenixa","quality":4,"tooltipParams":{}}},"item":{"id":63125,"name":"Reins
+      of the Dark Phoenix","icon":"inv_mount_darkphoenixa","quality":4,"tooltipParams":{}}},{"minGuildLevel":0,"minGuildRepLevel":5,"achievement":{"id":5465,"title":"Mix
+      Master","points":10,"description":"Create 1,000 Cataclysm flasks.","reward":"Reward:
+      Cauldron of Battle (Recipe)","rewardItem":{"id":65435,"name":"Recipe: Cauldron
+      of Battle","icon":"inv_scroll_04","quality":1,"tooltipParams":{}}},"item":{"id":65435,"name":"Recipe:
+      Cauldron of Battle","icon":"inv_scroll_04","quality":1,"tooltipParams":{}}},{"minGuildLevel":0,"minGuildRepLevel":6,"races":[3,7,11,22,1,4],"achievement":{"id":5152,"title":"Stay
+      Classy","points":10,"description":"Complete the classy achievements listed below.","reward":"Reward:
+      Guild Vault Voucher (8th Tab)","rewardItem":{"id":68136,"name":"Guild Vault
+      Voucher (8th Slot)","icon":"inv_misc_note_02","quality":4,"tooltipParams":{}}},"item":{"id":68136,"name":"Guild
+      Vault Voucher (8th Slot)","icon":"inv_misc_note_02","quality":4,"tooltipParams":{}}},{"minGuildLevel":0,"minGuildRepLevel":4,"achievement":{"id":4943,"title":"Guild
+      Level 5","points":10,"description":"Reach guild level 5.","reward":"Reward:
+      Guild Vault Voucher (7th Tab)","rewardItem":{"id":62286,"name":"Guild Vault
+      Voucher (7th Slot)","icon":"inv_misc_note_02","quality":4,"tooltipParams":{}}},"item":{"id":62286,"name":"Guild
+      Vault Voucher (7th Slot)","icon":"inv_misc_note_02","quality":4,"tooltipParams":{}}},{"minGuildLevel":0,"minGuildRepLevel":5,"achievement":{"id":4946,"title":"Guild
+      Level 20","points":10,"description":"Reach guild level 20.","reward":"Reward:
+      Heirloom Helms","rewardItem":{"id":69887,"name":"Burnished Helm of Might","icon":"inv_helmet_09","quality":7,"tooltipParams":{}}},"item":{"id":61958,"name":"Tattered
+      Dreadmist Mask","icon":"inv_helmet_29","quality":7,"tooltipParams":{}}},{"minGuildLevel":0,"minGuildRepLevel":5,"achievement":{"id":4946,"title":"Guild
+      Level 20","points":10,"description":"Reach guild level 20.","reward":"Reward:
+      Heirloom Helms","rewardItem":{"id":69887,"name":"Burnished Helm of Might","icon":"inv_helmet_09","quality":7,"tooltipParams":{}}},"item":{"id":61942,"name":"Preened
+      Tribal War Feathers","icon":"inv_helmet_24","quality":7,"tooltipParams":{}}},{"minGuildLevel":0,"minGuildRepLevel":5,"achievement":{"id":4946,"title":"Guild
+      Level 20","points":10,"description":"Reach guild level 20.","reward":"Reward:
+      Heirloom Helms","rewardItem":{"id":69887,"name":"Burnished Helm of Might","icon":"inv_helmet_09","quality":7,"tooltipParams":{}}},"item":{"id":61937,"name":"Stained
+      Shadowcraft Cap","icon":"inv_helmet_41","quality":7,"tooltipParams":{}}},{"minGuildLevel":0,"minGuildRepLevel":5,"achievement":{"id":4946,"title":"Guild
+      Level 20","points":10,"description":"Reach guild level 20.","reward":"Reward:
+      Heirloom Helms","rewardItem":{"id":69887,"name":"Burnished Helm of Might","icon":"inv_helmet_09","quality":7,"tooltipParams":{}}},"item":{"id":61936,"name":"Mystical
+      Coif of Elements","icon":"inv_helmet_04","quality":7,"tooltipParams":{}}},{"minGuildLevel":0,"minGuildRepLevel":5,"achievement":{"id":4946,"title":"Guild
+      Level 20","points":10,"description":"Reach guild level 20.","reward":"Reward:
+      Heirloom Helms","rewardItem":{"id":69887,"name":"Burnished Helm of Might","icon":"inv_helmet_09","quality":7,"tooltipParams":{}}},"item":{"id":61935,"name":"Tarnished
+      Raging Berserker''s Helm","icon":"inv_helmet_25","quality":7,"tooltipParams":{}}},{"minGuildLevel":0,"minGuildRepLevel":5,"achievement":{"id":4946,"title":"Guild
+      Level 20","points":10,"description":"Reach guild level 20.","reward":"Reward:
+      Heirloom Helms","rewardItem":{"id":69887,"name":"Burnished Helm of Might","icon":"inv_helmet_09","quality":7,"tooltipParams":{}}},"item":{"id":61931,"name":"Polished
+      Helm of Valor","icon":"inv_helmet_02","quality":7,"tooltipParams":{}}},{"minGuildLevel":0,"minGuildRepLevel":5,"achievement":{"id":4944,"title":"Guild
+      Level 10","points":10,"description":"Reach guild level 10.","reward":"Reward:
+      Heirloom Cloaks","rewardItem":{"id":69892,"name":"Ripped Sandstorm Cloak","icon":"inv_misc_cape_06","quality":7,"tooltipParams":{}}},"item":{"id":62040,"name":"Ancient
+      Bloodmoon Cloak","icon":"inv_misc_cape_05","quality":7,"tooltipParams":{}}},{"minGuildLevel":0,"minGuildRepLevel":5,"achievement":{"id":4944,"title":"Guild
+      Level 10","points":10,"description":"Reach guild level 10.","reward":"Reward:
+      Heirloom Cloaks","rewardItem":{"id":69892,"name":"Ripped Sandstorm Cloak","icon":"inv_misc_cape_06","quality":7,"tooltipParams":{}}},"item":{"id":62039,"name":"Inherited
+      Cape of the Black Baron","icon":"inv_misc_cape_20","quality":7,"tooltipParams":{}}},{"minGuildLevel":0,"minGuildRepLevel":5,"achievement":{"id":4944,"title":"Guild
+      Level 10","points":10,"description":"Reach guild level 10.","reward":"Reward:
+      Heirloom Cloaks","rewardItem":{"id":69892,"name":"Ripped Sandstorm Cloak","icon":"inv_misc_cape_06","quality":7,"tooltipParams":{}}},"item":{"id":62038,"name":"Worn
+      Stoneskin Gargoyle Cape","icon":"inv_misc_cape_19","quality":7,"tooltipParams":{}}},{"minGuildLevel":0,"minGuildRepLevel":6,"races":[3,7,11,22,1,4],"achievement":{"id":5201,"title":"Profit
+      Sharing","points":10,"description":"Loot 100,000 gold from creatures.","reward":"Reward:
+      Guild Herald","rewardItem":{"id":65363,"name":"Guild Herald","icon":"achievement_guildperk_honorablemention_rank2","quality":3,"tooltipParams":{}}},"item":{"id":65363,"name":"Guild
+      Herald","icon":"achievement_guildperk_honorablemention_rank2","quality":3,"tooltipParams":{}}},{"minGuildLevel":0,"minGuildRepLevel":5,"races":[3,7,11,22,1,4],"achievement":{"id":5031,"title":"Horde
+      Slayer","points":10,"description":"Complete the slayer achievements listed below.","reward":"Reward:
+      Guild Page","rewardItem":{"id":65361,"name":"Guild Page","icon":"achievement_guildperk_honorablemention","quality":3,"tooltipParams":{}}},"item":{"id":65361,"name":"Guild
+      Page","icon":"achievement_guildperk_honorablemention","quality":3,"tooltipParams":{}}},{"minGuildLevel":0,"minGuildRepLevel":6,"achievement":{"id":5144,"title":"Critter
+      Kill Squad","points":10,"description":"Kill 50,000 critters","reward":"Reward:
+      Armadillo Pup","rewardItem":{"id":63398,"name":"Armadillo Pup","icon":"inv_misc_babyarmadillopet","quality":3,"tooltipParams":{}}},"item":{"id":63398,"name":"Armadillo
+      Pup","icon":"inv_misc_babyarmadillopet","quality":3,"tooltipParams":{}}},{"minGuildLevel":0,"minGuildRepLevel":5,"races":[3,7,11,22,1,4],"achievement":{"id":4860,"title":"Working
+      as a Team","points":10,"description":"Obtain 525 skill points in all professions
+      and secondary professions.","reward":"Reward: Banner of Cooperation","rewardItem":{"id":64400,"name":"Banner
+      of Cooperation","icon":"inv_guild_standard_horde_a","quality":2,"tooltipParams":{}}},"item":{"id":63359,"name":"Banner
+      of Cooperation","icon":"inv_guild_standard_alliance_a","quality":2,"tooltipParams":{}}},{"minGuildLevel":0,"minGuildRepLevel":5,"races":[3,7,11,22,1,4],"achievement":{"id":5143,"title":"Guild
+      Cataclysm Dungeon Hero","points":10,"description":"Complete the heroic Cataclysm
+      dungeon achievements listed below while in a guild group.","reward":"Reward:
+      Standard of Unity","rewardItem":{"id":64401,"name":"Standard of Unity","icon":"inv_guild_standard_horde_b","quality":3,"tooltipParams":{}}},"item":{"id":64398,"name":"Standard
+      of Unity","icon":"inv_guild_standard_alliance_b","quality":3,"tooltipParams":{}}},{"minGuildLevel":0,"minGuildRepLevel":5,"races":[3,7,11,22,1,4],"achievement":{"id":5422,"title":"A
+      Daily Routine","points":10,"description":"Complete 15,000 daily quests.","reward":"Reward:
+      Battle Standard of Coordination","rewardItem":{"id":64402,"name":"Battle Standard
+      of Coordination","icon":"inv_guild_standard_horde_c","quality":4,"tooltipParams":{}}},"item":{"id":64399,"name":"Battle
+      Standard of Coordination","icon":"inv_guild_standard_alliance_c","quality":4,"tooltipParams":{}}},{"minGuildLevel":0,"minGuildRepLevel":5,"races":[6,5,2,8,9,10],"achievement":{"id":4860,"title":"Working
+      as a Team","points":10,"description":"Obtain 525 skill points in all professions
+      and secondary professions.","reward":"Reward: Banner of Cooperation","rewardItem":{"id":64400,"name":"Banner
+      of Cooperation","icon":"inv_guild_standard_horde_a","quality":2,"tooltipParams":{}}},"item":{"id":64400,"name":"Banner
+      of Cooperation","icon":"inv_guild_standard_horde_a","quality":2,"tooltipParams":{}}},{"minGuildLevel":0,"minGuildRepLevel":5,"races":[6,5,2,8,9,10],"achievement":{"id":5143,"title":"Guild
+      Cataclysm Dungeon Hero","points":10,"description":"Complete the heroic Cataclysm
+      dungeon achievements listed below while in a guild group.","reward":"Reward:
+      Standard of Unity","rewardItem":{"id":64401,"name":"Standard of Unity","icon":"inv_guild_standard_horde_b","quality":3,"tooltipParams":{}}},"item":{"id":64401,"name":"Standard
+      of Unity","icon":"inv_guild_standard_horde_b","quality":3,"tooltipParams":{}}},{"minGuildLevel":0,"minGuildRepLevel":5,"races":[6,5,2,8,9,10],"achievement":{"id":5422,"title":"A
+      Daily Routine","points":10,"description":"Complete 15,000 daily quests.","reward":"Reward:
+      Battle Standard of Coordination","rewardItem":{"id":64402,"name":"Battle Standard
+      of Coordination","icon":"inv_guild_standard_horde_c","quality":4,"tooltipParams":{}}},"item":{"id":64402,"name":"Battle
+      Standard of Coordination","icon":"inv_guild_standard_horde_c","quality":4,"tooltipParams":{}}},{"minGuildLevel":0,"minGuildRepLevel":6,"races":[6,5,2,8,9,10],"achievement":{"id":5158,"title":"Stay
+      Classy","points":10,"description":"Complete the classy achievements listed below.","reward":"Reward:
+      Guild Vault Voucher (8th Tab)","rewardItem":{"id":62287,"name":"Guild Vault
+      Voucher (8th Slot)","icon":"inv_misc_note_02","quality":4,"tooltipParams":{}}},"item":{"id":62287,"name":"Guild
+      Vault Voucher (8th Slot)","icon":"inv_misc_note_02","quality":4,"tooltipParams":{}}},{"minGuildLevel":0,"minGuildRepLevel":4,"item":{"id":69209,"name":"Illustrious
+      Guild Tabard","icon":"inv_rareguildtabard","quality":3,"tooltipParams":{}}},{"minGuildLevel":0,"minGuildRepLevel":5,"item":{"id":69210,"name":"Renowned
+      Guild Tabard","icon":"inv_epicguildtabard","quality":4,"tooltipParams":{}}},{"minGuildLevel":0,"minGuildRepLevel":5,"achievement":{"id":4944,"title":"Guild
+      Level 10","points":10,"description":"Reach guild level 10.","reward":"Reward:
+      Heirloom Cloaks","rewardItem":{"id":69892,"name":"Ripped Sandstorm Cloak","icon":"inv_misc_cape_06","quality":7,"tooltipParams":{}}},"item":{"id":69892,"name":"Ripped
+      Sandstorm Cloak","icon":"inv_misc_cape_06","quality":7,"tooltipParams":{}}},{"minGuildLevel":0,"minGuildRepLevel":5,"achievement":{"id":4946,"title":"Guild
+      Level 20","points":10,"description":"Reach guild level 20.","reward":"Reward:
+      Heirloom Helms","rewardItem":{"id":69887,"name":"Burnished Helm of Might","icon":"inv_helmet_09","quality":7,"tooltipParams":{}}},"item":{"id":69887,"name":"Burnished
+      Helm of Might","icon":"inv_helmet_09","quality":7,"tooltipParams":{}}},{"minGuildLevel":0,"minGuildRepLevel":7,"achievement":{"id":5840,"title":"Dragonwrath,
+      Tarecgosa''s Rest - Guild Edition","points":10,"description":"Owner of Dragonwrath,
+      Tarecgosa''s Rest","reward":"Reward: Dragonwrath Whelpling","rewardItem":{"id":71033,"name":"Lil''
+      Tarecgosa","icon":"inv_misc_petdragonwhelptarecgosa","quality":1,"tooltipParams":{}}},"item":{"id":71033,"name":"Lil''
+      Tarecgosa","icon":"inv_misc_petdragonwhelptarecgosa","quality":1,"tooltipParams":{}}}]}'
+    http_version: '1.1'
