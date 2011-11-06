@@ -19,5 +19,13 @@ class Battlenet
     def item_classes(options = {})
       get "/data/item/classes", options
     end
+
+    def character_achievements(options = {})
+      get "/data/character/achievements", options
+    end
+
+    def guild_achievements(options = {})
+      get "/data/guild/achievements", options
+    end
   end
 end

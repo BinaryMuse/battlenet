@@ -38,4 +38,20 @@ describe Battlenet::Data do
       data["classes"].first["name"].should == "Consumable"
     end
   end
+
+  it "fetches character achievements data" do
+    VCR.use_cassette('character_achievements') do
+      data = api.character_achievements
+      data["achievements"].first["name"].should == "General"
+      data["achievements"].first["achievements"].first["title"].should == "Level 10"
+    end
+  end
+
+  it "fetches guild achievements data" do
+    VCR.use_cassette('guild_achievements') do
+      data = api.guild_achievements
+      data["achievements"].first["name"].should == "General"
+      data["achievements"].first["achievements"].first["title"].should == "Guild Level 5"
+    end
+  end
 end
