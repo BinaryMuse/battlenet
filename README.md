@@ -38,7 +38,7 @@ Battlenet is backed by the excellent [HTTParty gem](https://github.com/jnunemake
 Battlenet also provides modules for each section of the API, providing easy access to the resources.
 
     api.item '12784'
-    api.character 'Nazjatar', 'Cyaga', :fields => ["stats", "talents", "quests"]
+    api.character 'Nazjatar', 'Cyaga', :fields => "stats,talents,quests"
 
 Configuring
 ===========
@@ -53,9 +53,24 @@ By default, if Battlenet receives a non-200 response from the Battle.net API, it
 Localization
 ------------
 
-The Battle.net API supports localization via a query string parameter. Battlenet can transparently handle setting this parameter for you on every request. Just set the `localization` attribute:
+The Battle.net API supports localization via a query string parameter. Battlenet can transparently handle setting this parameter for you on every request. Just set the `locale` attribute:
 
-    Battlenet.localization = "en_GB"
+    Battlenet.locale = "en_GB"
+
+Please note that each region only supports certain locales.
+
+Battle.net API Documentation
+============================
+
+The documentation for the Battle.net API can be found at http://blizzard.github.com/api-wow-docs/.
+
+What's Missing
+==============
+
+The following features are planned but not yet supported:
+
+  * Caching support via Memcached, Redis, etc.
+  * If-Last-Modified header support
 
 Contributing
 ============

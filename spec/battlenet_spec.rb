@@ -48,7 +48,7 @@ describe Battlenet do
     let(:api) { Battlenet.new :us }
 
     it "delegates to #make_request" do
-      api.should_receive(:make_request).with(:get, '/test')
+      api.should_receive(:make_request).with(:get, '/test', {})
       api.get '/test'
     end
   end
@@ -59,6 +59,26 @@ describe Battlenet do
     it "delegates to HTTParty" do
       Battlenet.should_receive(:get).with('/test', {})
       api.make_request :get, '/test'
+    end
+
+    it "passes query string parameters to HTTParty" do
+      Battlenet.should_receive(:get).with('/test', {:query => {:fields => 'talents'}})
+      api.make_request :get, '/test', :fields => 'talents'
+    end
+
+    context "when the locale is set" do
+      before(:each) do
+        Battlenet.locale = "es_ES"
+      end
+
+      after(:each) do
+        Battlenet.locale = nil
+      end
+
+      it "adds the locale parameter to the query string" do
+        Battlenet.should_receive(:get).with('/test', {:query => {:fields => 'talents', :locale => 'es_ES'}})
+        api.make_request :get, '/test', :fields => 'talents'
+      end
     end
 
     context "when the public and private key are set" do
@@ -130,7 +150,7 @@ describe Battlenet do
 
     it "delegates to a Battlenet::Authentication" do
       auth = mock(:auth)
-      Battlenet::Authentication.should_receive(:new).with('public', 'private').and_return(auth)
+      Battlenet::Authentication.should_receive(:new).with('private').and_return(auth)
       auth.should_receive(:sign).with(:get, api.fullpath('/test'), Time.now)
       api.sign_request :get, '/test', Time.now
     end

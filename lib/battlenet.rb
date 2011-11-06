@@ -9,9 +9,9 @@ class Battlenet
 
   class << self
     attr_accessor :fail_silently
-    attr_accessor :localization
+    attr_accessor :locale
     @fail_silently = false
-    @localization = nil
+    @locale = nil
   end
 
   def initialize(region = :us, public = nil, private = nil)
@@ -43,20 +43,31 @@ class Battlenet
     "#{@endpoint}#{path}"
   end
 
-  def get(path)
-    make_request :get, path
+  def get(path, params = {})
+    make_request :get, path, params
   end
 
-  def make_request(verb, path)
+  def make_request(verb, path, params = {})
     options = {}
+    headers = {}
+
     if @public && @private
       now = Time.now
       signed = sign_request verb, path, now
-      options.merge! :headers => {
+      headers.merge!({
         "Authorization" => "BNET #{@public}:#{signed}",
         "Date" => now.httpdate
-      }
+      })
     end
+
+    options[:headers] = headers unless headers.empty?
+    options[:query]   = params unless params.empty?
+
+    if Battlenet.locale
+      options[:query] ||= {}
+      options[:query].merge!({ :locale => Battlenet.locale })
+    end
+
     response = self.class.send(verb, path, options)
 
     if response.code != 200 && Battlenet.fail_silently == false
@@ -66,7 +77,7 @@ class Battlenet
   end
 
   def sign_request(verb, path, time)
-    auth = Battlenet::Authentication.new @public, @private
+    auth = Battlenet::Authentication.new @private
     auth.sign verb, fullpath(path), time
   end
 end

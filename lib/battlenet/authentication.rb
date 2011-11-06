@@ -4,8 +4,7 @@ require 'openssl'
 
 class Battlenet
   class Authentication
-    def initialize(public, private)
-      @public = public
+    def initialize(private)
       @private = private
     end
 
