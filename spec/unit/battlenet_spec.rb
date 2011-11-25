@@ -1,6 +1,4 @@
 require 'spec_helper'
-require 'battlenet'
-require 'battlenet/authentication'
 
 describe Battlenet do
   before(:each) do

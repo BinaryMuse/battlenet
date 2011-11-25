@@ -1,7 +1,4 @@
-# "{\r\n\"realm\":{\"name\":\"Nazjatar\",\"slug\":\"nazjatar\"},\r\n\"alliance\":{\"auctions\":[\r\n\t{\"auc\":1329311139,\"item\":42989,\"owner\":\"Price\",\"bid\":15000000,
-
 require 'spec_helper'
-require 'battlenet'
 
 describe Battlenet::Auction do
   let(:api) { Battlenet.new }

@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'battlenet'
 
 describe Battlenet::Arena do
   let(:api) { Battlenet.new }

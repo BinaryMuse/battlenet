@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'battlenet'
 
 describe Battlenet::Item do
   let(:api) { Battlenet.new }

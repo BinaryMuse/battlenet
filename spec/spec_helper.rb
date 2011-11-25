@@ -1,3 +1,5 @@
+require 'battlenet'
+
 require 'timecop'
 require 'vcr'
 

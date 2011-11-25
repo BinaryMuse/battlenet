@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'battlenet/authentication'
 
 describe Battlenet::Authentication do
   let(:auth) { Battlenet::Authentication.new 'private' }
