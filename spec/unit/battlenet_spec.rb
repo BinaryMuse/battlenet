@@ -34,34 +34,17 @@ describe Battlenet do
     end
   end
 
-  context "#fullpath" do
-    it "returns the full path for the resource" do
-      api = Battlenet.new
-      api.instance_variable_set(:@endpoint, "/test/testing")
-      api.fullpath("/thetest").should == "/test/testing/thetest"
-    end
-  end
-
   context "#get" do
-    let(:api) { Battlenet.new :us }
-
-    it "delegates to #make_request" do
-      api.should_receive(:make_request).with(:get, '/test', {})
-      api.get '/test'
-    end
-  end
-
-  context "#make_request" do
     let(:api) { Battlenet.new :us }
 
     it "delegates to HTTParty" do
       Battlenet.should_receive(:get).with('/test', {})
-      api.make_request :get, '/test'
+      api.get '/test'
     end
 
     it "passes query string parameters to HTTParty" do
       Battlenet.should_receive(:get).with('/test', {:query => {:fields => 'talents'}})
-      api.make_request :get, '/test', :fields => 'talents'
+      api.get '/test', :fields => 'talents'
     end
 
     context "when the locale is set" do
@@ -75,7 +58,7 @@ describe Battlenet do
 
       it "adds the locale parameter to the query string" do
         Battlenet.should_receive(:get).with('/test', {:query => {:fields => 'talents', :locale => 'es_ES'}})
-        api.make_request :get, '/test', :fields => 'talents'
+        api.get '/test', :fields => 'talents'
       end
     end
 
@@ -92,13 +75,33 @@ describe Battlenet do
 
       it "signs the request if the public and private key are present" do
         api.should_receive(:sign_request).with(:get, '/test', Time.now)
-        api.make_request :get, '/test'
+        api.get '/test'
       end
 
       it "sets the Authorization and Date headers" do
         Battlenet::Authentication.any_instance.stub(:sign).and_return("signature")
         Battlenet.should_receive(:get).with('/test', :headers => { "Authorization" => "BNET public:signature", "Date" => Time.now.httpdate })
-        api.make_request :get, '/test'
+        api.get '/test'
+      end
+    end
+
+    context "when the public and private key are set" do
+      let(:api) { Battlenet.new :us, 'public', 'private' }
+
+      before(:each) do
+        Timecop.freeze
+      end
+
+      after(:each) do
+        Timecop.return
+      end
+
+      it "signs the request using the full path" do
+        api.instance_variable_set(:@endpoint, "/tester/testing")
+        auth = mock(:auth)
+        Battlenet::Authentication.should_receive(:new).with('private').and_return(auth)
+        auth.should_receive(:sign).with(:get, '/tester/testing/test', Time.now)
+        api.get '/test'
       end
     end
 
@@ -132,25 +135,6 @@ describe Battlenet do
           }.should_not raise_error
         end
       end
-    end
-  end
-
-  context "#sign_request" do
-    let(:api) { Battlenet.new :us, 'public', 'private' }
-
-    before(:each) do
-      Timecop.freeze
-    end
-
-    after(:each) do
-      Timecop.return
-    end
-
-    it "delegates to a Battlenet::Authentication" do
-      auth = mock(:auth)
-      Battlenet::Authentication.should_receive(:new).with('private').and_return(auth)
-      auth.should_receive(:sign).with(:get, api.fullpath('/test'), Time.now)
-      api.sign_request :get, '/test', Time.now
     end
   end
 end

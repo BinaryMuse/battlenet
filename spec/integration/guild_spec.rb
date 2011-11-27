@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Battlenet::Guild do
+describe Battlenet::Modules::Guild do
   let(:api) { Battlenet.new }
 
   it "fetches guild data" do

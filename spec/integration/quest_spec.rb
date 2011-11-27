@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Battlenet::Quest do
+describe Battlenet::Modules::Quest do
   let(:api) { Battlenet.new }
 
   it "fetches quest data" do

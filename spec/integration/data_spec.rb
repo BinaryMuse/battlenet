@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Battlenet::Data do
+describe Battlenet::Modules::Data do
   let(:api) { Battlenet.new }
 
   it "fetches character races data" do

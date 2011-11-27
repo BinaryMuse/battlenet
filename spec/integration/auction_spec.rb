@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Battlenet::Auction do
+describe Battlenet::Modules::Auction do
   let(:api) { Battlenet.new }
 
   it "fetches auction data" do

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Battlenet::Item do
+describe Battlenet::Modules::Item do
   let(:api) { Battlenet.new }
 
   it "fetches item data" do

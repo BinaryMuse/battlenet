@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe Battlenet::Character do
+describe Battlenet::Modules::Character do
   let(:api) { Battlenet.new }
 
   it "fetches character data" do

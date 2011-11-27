@@ -1,0 +1,8 @@
+--readme               README.md
+--markup               markdown
+--markup-provider      redcarpet
+--title                "Battlenet Documentation"
+lib/**/*.rb
+-
+README.md
+LICENSE

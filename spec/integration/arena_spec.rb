@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Battlenet::Arena do
+describe Battlenet::Modules::Arena do
   let(:api) { Battlenet.new }
 
   it "fetches arena data" do

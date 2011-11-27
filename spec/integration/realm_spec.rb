@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe Battlenet::Realm do
+describe Battlenet::Modules::Realm do
   let(:api) { Battlenet.new }
 
   it "fetches realm data" do

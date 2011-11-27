@@ -1,7 +1,9 @@
 class Battlenet
-  module Realm
-    def realm(options = {})
-      get "/realm/status", options
+  module Modules
+    module Realm
+      def realm(options = {})
+        get "/realm/status", options
+      end
     end
   end
 end
