@@ -96,7 +96,7 @@ To install all development gems, including the ones used to generate documentati
 
 To run the specs, run
 
-    rake
+    bundle exec rake
 
 Writing an Integration Test
 ---------------------------
