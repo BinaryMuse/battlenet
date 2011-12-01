@@ -4,7 +4,7 @@ describe Battlenet::Authentication do
   let(:auth) { Battlenet::Authentication.new 'private' }
 
   before(:each) do
-    time = Time.local 2011, 11, 4, 20, 36, 24
+    time = Time.utc 2011, 11, 5, 3, 36, 24
     Timecop.freeze(time)
   end
 
