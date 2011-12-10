@@ -24,9 +24,10 @@ class Battlenet
   class << self
     attr_accessor :fail_silently
     attr_accessor :locale
-    @fail_silently = false
-    @locale = nil
   end
+
+  @fail_silently = false
+  @locale = nil
 
   def initialize(region = :us, public = nil, private = nil)
     @public = public
