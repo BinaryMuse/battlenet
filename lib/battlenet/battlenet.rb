@@ -23,7 +23,7 @@ require 'battlenet/modules/data'
 #
 #   api  = Battlenet.new :us
 #   char = api.character 'Nazjatar', 'Cyaga'
-#   puts char['level']
+#   char['level']
 #   # => 85
 #
 # @example Return additional information about a character
@@ -31,8 +31,8 @@ require 'battlenet/modules/data'
 #   api  = Battlenet.new :us
 #   char = api.character 'Nazjatar', 'Cyaga', :fields => 'titles'
 #   selected_title = char['titles'].find { |t| t['selected'] == true }
-#   puts selected_title['name']
-#   # => %s, Guardian of Cenarius
+#   selected_title['name']
+#   # => "%s, Guardian of Cenarius"
 #
 # @see Battlenet::Modules
 #
