@@ -68,10 +68,10 @@ class Battlenet
     #
     # @return [String|nil]
     attr_accessor :locale
-
-    @fail_silently = false
-    @locale = nil
   end
+
+  @fail_silently = false
+  @locale = nil
 
   # Creates a new instance of the Battlenet API.
   #

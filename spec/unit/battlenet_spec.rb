@@ -113,10 +113,6 @@ describe Battlenet do
       end
 
       context "when fail_silently is off" do
-        before(:each) do
-          Battlenet.fail_silently = false
-        end
-
         it "throws an exception" do
           lambda {
             api.get '/test'
@@ -129,7 +125,7 @@ describe Battlenet do
           Battlenet.fail_silently = true
         end
 
-        it "throws an exception" do
+        it "does not throw an exception" do
           lambda {
             api.get '/test'
           }.should_not raise_error
