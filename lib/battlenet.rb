@@ -5,6 +5,7 @@ require 'battlenet/modules/guild'
 require 'battlenet/modules/realm'
 require 'battlenet/modules/auction'
 require 'battlenet/modules/item'
+require 'battlenet/modules/recipe'
 require 'battlenet/modules/quest'
 require 'battlenet/modules/arena'
 require 'battlenet/modules/data'
@@ -17,6 +18,7 @@ class Battlenet
   include Battlenet::Realm
   include Battlenet::Auction
   include Battlenet::Item
+  include Battlenet::Recipe
   include Battlenet::Quest
   include Battlenet::Arena
   include Battlenet::Data
