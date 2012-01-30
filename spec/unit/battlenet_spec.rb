@@ -105,10 +105,11 @@ describe Battlenet do
       end
     end
 
-    context "when the response does not have a 200 status code" do
+    context "when the response does not have a status code indicating success" do
       before(:each) do
-        response = mock(:response).as_null_object
-        response.should_receive(:code).at_least(:once).and_return(500)
+        response = stub(:response).as_null_object
+        response.stub(:code).and_return(500)
+        response.stub(:[]).with('reason').and_return('Server Error')
         Battlenet.should_receive(:get).and_return(response)
       end
 
@@ -116,7 +117,16 @@ describe Battlenet do
         it "throws an exception" do
           lambda {
             api.get '/test'
-          }.should raise_error
+          }.should raise_error(Battlenet::ApiException)
+        end
+
+        it "throws an exception with the code and reason set" do
+          begin
+            api.get '/test'
+          rescue Battlenet::ApiException => ex
+            ex.code.should == 500
+            ex.reason.should == 'Server Error'
+          end
         end
       end
 

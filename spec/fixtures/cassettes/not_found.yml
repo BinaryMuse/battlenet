@@ -1,0 +1,26 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://us.battle.net:80/api/wow/item/1234567890
+    body: 
+    headers: 
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 404
+      message: Not Found
+    headers:
+      date:
+      - Mon, 30 Jan 2012 18:44:15 GMT
+      server:
+      - Apache
+      x-frame-options:
+      - SAMEORIGIN
+      content-length:
+      - '61'
+      vary:
+      - Accept-Encoding
+      content-type:
+      - application/json;charset=utf-8
+    body: ! '{"status":"nok", "reason": "unable to get item information."}'
+    http_version: '1.1'

@@ -2,6 +2,7 @@
 --markup               markdown
 --markup-provider      redcarpet
 --title                "Battlenet Documentation"
+--private
 lib/**/*.rb
 -
 README.md

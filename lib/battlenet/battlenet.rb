@@ -1,5 +1,6 @@
 require 'httparty'
 require 'battlenet/authentication'
+require 'battlenet/exceptions/api_exception'
 require 'battlenet/modules/character'
 require 'battlenet/modules/guild'
 require 'battlenet/modules/realm'
@@ -59,7 +60,7 @@ class Battlenet
   include Battlenet::Modules::Data
 
   class << self
-    # Whether or not to raise exceptions on non-200 responses from the API endpoint.
+    # Whether or not to raise exceptions on error responses from the API endpoint.
     # A value of `false` causes exceptions to be raised. Defaults to `false`.
     #
     # @return [boolean]
@@ -133,7 +134,8 @@ class Battlenet
     # @param path [String] the path to GET
     # @param params [Hash] options to be turned into query string parameters
     # @return [Object] the response object from HTTParty
-    # @raise Exception if the response has a non-200 response and `Battlenet.fail_silently` is `false`
+    # @raise Battlenet::ApiException if the response has a 4xx or 5xx response and `Battlenet.fail_silently` is `false`
+    # @see #process_response
     # @see http://rubydoc.info/github/jnunemaker/httparty/master/HTTParty/Response
     # @private
     def make_request(verb, path, params = {})
@@ -158,9 +160,12 @@ class Battlenet
       end
 
       response = self.class.send(verb, path, options)
+      process_response response
+    end
 
-      if response.code != 200 && Battlenet.fail_silently == false
-        raise "Non-200 response: #{response.code}, #{response.body}"
+    def process_response(response)
+      if response.code.to_s =~ /^(4|5)/ && Battlenet.fail_silently == false
+        raise Battlenet::ApiException.new(response)
       end
       response
     end

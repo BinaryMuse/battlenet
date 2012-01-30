@@ -48,9 +48,11 @@ Configuring
 Failing Silently
 ----------------
 
-By default, if Battlenet receives a non-200 response from the Battle.net API, it will throw an exception. You can turn this behavior off via the `fail_silently` attribute:
+By default, if Battlenet receives a 4xx or 5xx response from the Battle.net API, it will throw a `Battlent::ApiException`. You can turn this behavior off via the `fail_silently` attribute:
 
     Battlenet.fail_silently = true
+
+The exception will have its `code` attribute set to the HTTP status code returned from the API; if the response included a JSON response with the `reason` field set, the exception will have a `reason` attribute set to this string. You can also access the raw response via the `response` attribute.
 
 Localization
 ------------
