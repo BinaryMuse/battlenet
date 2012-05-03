@@ -1,0 +1,33 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://us.battle.net:80/api/wow/data/battlegroups/
+    body: 
+    headers: 
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Thu, 03 May 2012 23:30:30 GMT
+      server:
+      - Apache
+      x-frame-options:
+      - SAMEORIGIN
+      expires:
+      - Sat, 02 Jun 2012 23:30:30 GMT
+      cache-control:
+      - max-age=2592000
+      content-language:
+      - en-US
+      content-length:
+      - '616'
+      vary:
+      - Accept-Encoding
+      content-type:
+      - application/json;charset=utf-8
+    body: ! '{"battlegroups":[{"name":"Bloodlust","slug":"bloodlust"},{"name":"Coliseum","slug":"coliseum"},{"name":"Coliseum
+      1","slug":"coliseum-1"},{"name":"Cyclone","slug":"cyclone"},{"name":"Emberstorm","slug":"emberstorm"},{"name":"Nightfall","slug":"nightfall"},{"name":"Rampage","slug":"rampage"},{"name":"Reckoning","slug":"reckoning"},{"name":"Retaliation","slug":"retaliation"},{"name":"Ruin","slug":"ruin"},{"name":"Shadowburn","slug":"shadowburn"},{"name":"Stormstrike","slug":"stormstrike"},{"name":"Vengeance","slug":"vengeance"},{"name":"Vindication","slug":"vindication"},{"name":"Whirlwind","slug":"whirlwind"}]}'
+    http_version: '1.1'

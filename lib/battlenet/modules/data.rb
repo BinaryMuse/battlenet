@@ -1,6 +1,11 @@
 class Battlenet
   module Modules
     module Data
+      def battlegroups(options = {})
+        # URL currently requires a trailing '/'
+        get "/data/battlegroups/", options
+      end
+
       def character_races(options = {})
         get "/data/character/races", options
       end

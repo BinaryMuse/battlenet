@@ -3,6 +3,13 @@ require 'spec_helper'
 describe Battlenet::Modules::Data do
   let(:api) { Battlenet.new }
 
+  it "fetches battlegroups data" do
+    VCR.use_cassette('battlegroups') do
+      battlegroups = api.battlegroups
+      battlegroups['battlegroups'][0]['name'].should == 'Bloodlust'
+    end
+  end
+
   it "fetches character races data" do
     VCR.use_cassette('character_races') do
       data = api.character_races
