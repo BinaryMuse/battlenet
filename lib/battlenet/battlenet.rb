@@ -9,6 +9,7 @@ require 'battlenet/modules/item'
 require 'battlenet/modules/recipe'
 require 'battlenet/modules/quest'
 require 'battlenet/modules/arena'
+require 'battlenet/modules/pvp'
 require 'battlenet/modules/data'
 
 # Battlenet exposes the Blizzard Battle.net Community Platform API via an
@@ -57,6 +58,7 @@ class Battlenet
   include Battlenet::Modules::Recipe
   include Battlenet::Modules::Quest
   include Battlenet::Modules::Arena
+  include Battlenet::Modules::Pvp
   include Battlenet::Modules::Data
 
   class << self
