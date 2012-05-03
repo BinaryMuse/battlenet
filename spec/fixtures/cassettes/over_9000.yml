@@ -1,0 +1,29 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://us.battle.net:80/api/wow/achievement/4496
+    body: 
+    headers: 
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Thu, 03 May 2012 23:33:46 GMT
+      server:
+      - Apache
+      x-frame-options:
+      - SAMEORIGIN
+      content-language:
+      - en-US
+      content-length:
+      - '208'
+      vary:
+      - Accept-Encoding
+      content-type:
+      - application/json;charset=utf-8
+    body: ! '{"id":4496,"title":"It''s Over Nine Thousand!","points":0,"description":"Earn
+      more than 9000 achievement points.","rewardItems":[],"icon":"ability_warrior_innerrage","criteria":[{"id":12698,"description":""}]}'
+    http_version: '1.1'
