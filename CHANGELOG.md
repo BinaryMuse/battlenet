@@ -1,3 +1,11 @@
+## v1.4.0
+
+* Add item set resource
+* Add arena ladder resource
+* Add rated BG ladder resource
+* Add battlegroups data resource
+* Add achievement resource
+
 ## v1.3.0
 
 * Add `Battlenet::ApiException` for API error responses
