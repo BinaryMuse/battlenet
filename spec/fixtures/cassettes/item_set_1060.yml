@@ -1,0 +1,31 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://us.battle.net:80/api/wow/item/set/1060
+    body: 
+    headers: 
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Thu, 03 May 2012 23:17:11 GMT
+      server:
+      - Apache
+      x-frame-options:
+      - SAMEORIGIN
+      content-language:
+      - en-US
+      content-length:
+      - '315'
+      vary:
+      - Accept-Encoding
+      content-type:
+      - application/json;charset=utf-8
+    body: ! '{"id":1060,"name":"Deep Earth Vestments","setBonuses":[{"description":"After
+      using Innervate, the mana cost of your healing spells is reduced by 25% for
+      15 sec.","threshold":2},{"description":"Your Rejuvenation and Regrowth spells
+      have a 10% chance to Timeslip and have double the normal duration.","threshold":4}]}'
+    http_version: '1.1'
