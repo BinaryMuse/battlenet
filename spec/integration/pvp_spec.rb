@@ -10,4 +10,12 @@ describe Battlenet::Modules::Pvp do
       ladder['arenateam'][0]['members'][0]['character']['name'].should == 'Meepins'
     end
   end
+
+  it "fetches rated BG ladder data" do
+    VCR.use_cassette('rated_bg_ladder') do
+      ladder = api.rated_bg_ladder
+      ladder['bgRecord'][0]['rank'].should == 1
+      ladder['bgRecord'][0]['realm']['name'].should == "Kel'Thuzad"
+    end
+  end
 end

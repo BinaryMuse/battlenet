@@ -9,6 +9,10 @@ class Battlenet
 
         get "/pvp/arena/#{battlegroup}/#{size}", options
       end
+
+      def rated_bg_ladder(options = {})
+        get "/pvp/ratedbg/ladder", options
+      end
     end
   end
 end
