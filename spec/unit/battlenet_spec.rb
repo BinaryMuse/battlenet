@@ -114,10 +114,10 @@ describe Battlenet do
       end
 
       context "when fail_silently is off" do
-        it "throws an exception" do
+        it "throws an exception with a message that contains the code and reason" do
           lambda {
             api.get '/test'
-          }.should raise_error(Battlenet::ApiException)
+          }.should raise_error(Battlenet::ApiException, /500.*?Server Error/)
         end
 
         it "throws an exception with the code and reason set" do
