@@ -169,7 +169,7 @@ class Battlenet
 
     def process_response(response)
       if response.code.to_s =~ /^(4|5)/ && Battlenet.fail_silently == false
-        raise Battlenet::ApiException.new(response)
+        raise Battlenet::ApiException.new(response), "#{response.code}, #{response['reason']}"
       end
       response
     end
