@@ -83,25 +83,21 @@ class Battlenet
   # Creates a new instance of the Battlenet API.
   #
   # @param region [Symbol] the region to perform API calls against.
-  # @param public [String|nil] the public key to use when signing requests
-  # @param private [String|nil]  the private key to use when signing requests
-  def initialize(region = :us, public = nil, private = nil)
-    @public = public
-    @private = private
-
-    @proto = @public && @private ? "https://" : "http://"
-    @endpoint = '/api/wow'
+  def initialize(region = :us, apikey = nil)
+    @apikey = apikey
+    @proto = "https://"
+    @endpoint = '/wow'
     @domain = case region
     when :us
-      'us.battle.net'
+      'us.api.battle.net'
     when :eu
-      'eu.battle.net'
+      'eu.api.battle.net'
     when :kr
-      'kr.battle.net'
+      'kr.api.battle.net'
     when :tw
-      'tw.battle.net'
+      'tw.api.battle.net'
     when :cn
-      'battlenet.com.cn'
+      'battlenet.api.com.cn'
     else
       raise "Invalid region: #{region.to_s}"
     end
@@ -146,13 +142,8 @@ class Battlenet
       options = {}
       headers = {}
 
-      if @public && @private
-        now = Time.now
-        signed = sign_request verb, path, now
-        headers.merge!({
-          "Authorization" => "BNET #{@public}:#{signed}",
-          "Date" => now.httpdate
-        })
+      if @apikey
+        params.merge!({"apikey" => @apikey})
       end
 
       options[:headers] = headers unless headers.empty?
@@ -172,17 +163,5 @@ class Battlenet
         raise Battlenet::ApiException.new(response)
       end
       response
-    end
-
-    # Signs an HTTP request.
-    #
-    # @param verb [Symbol] the HTTP verb for the request being signed
-    # @param path [String] the path for the rquest being signed
-    # @param time [Time] the time to use when signing the request
-    # @return [String] value to be used as the final portion of the `Authorization` HTTP header
-    # @see Battlenet::Authentication
-    def sign_request(verb, path, time)
-      auth = Battlenet::Authentication.new @private
-      auth.sign verb, fullpath(path), time
     end
 end
