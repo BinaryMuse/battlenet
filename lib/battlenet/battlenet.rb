@@ -97,7 +97,9 @@ class Battlenet
     when :tw
       'tw.api.battle.net'
     when :cn
-      'battlenet.api.com.cn'
+      'api.battlenet.com.cn'
+    when :sea
+      'sea.api.battle.net'
     else
       raise "Invalid region: #{region.to_s}"
     end
