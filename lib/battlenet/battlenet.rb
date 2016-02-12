@@ -1,5 +1,4 @@
 require 'httparty'
-require 'battlenet/authentication'
 require 'battlenet/exceptions/api_exception'
 require 'battlenet/modules/character'
 require 'battlenet/modules/guild'
@@ -25,7 +24,7 @@ require 'battlenet/modules/data'
 #
 # @example Return basic information about a character named Cyaga from the US realm Nazjatar
 #
-#   api  = Battlenet.new :us
+#   api  = Battlenet.new :us, 'your_apikey'
 #   char = api.character 'Nazjatar', 'Cyaga'
 #   char['level']
 #   # => 85
@@ -83,6 +82,7 @@ class Battlenet
   # Creates a new instance of the Battlenet API.
   #
   # @param region [Symbol] the region to perform API calls against.
+  # @param apikey [String] API key used to authenticate the request.
   def initialize(region = :us, apikey = nil)
     @apikey = apikey
     @proto = "https://"
@@ -108,8 +108,7 @@ class Battlenet
     self.class.base_uri @base_uri
   end
 
-  # Signs and performs an HTTP GET request. The request is only signed if a public and private
-  # key were provided during object instantiation.
+  # Performs an HTTP GET request. Uses API key if set.
   #
   # @param path (see #make_request)
   # @param params (see #make_request)
@@ -129,8 +128,7 @@ class Battlenet
       "#{@endpoint}#{path}"
     end
 
-    # Signs and performs an HTTP request. The request is only signed if a public and private
-    # key were provided during object instantiation.
+    # Performs an HTTP request. Uses API key if set.
     #
     # @param verb [Symbol] the HTTP verb to perform
     # @param path [String] the path to GET
