@@ -1,5 +1,4 @@
 require 'httparty'
-require 'battlenet/authentication'
 require 'battlenet/exceptions/api_exception'
 require 'battlenet/modules/character'
 require 'battlenet/modules/guild'
@@ -25,7 +24,7 @@ require 'battlenet/modules/data'
 #
 # @example Return basic information about a character named Cyaga from the US realm Nazjatar
 #
-#   api  = Battlenet.new :us
+#   api  = Battlenet.new :us, 'your_apikey'
 #   char = api.character 'Nazjatar', 'Cyaga'
 #   char['level']
 #   # => 85
@@ -83,25 +82,24 @@ class Battlenet
   # Creates a new instance of the Battlenet API.
   #
   # @param region [Symbol] the region to perform API calls against.
-  # @param public [String|nil] the public key to use when signing requests
-  # @param private [String|nil]  the private key to use when signing requests
-  def initialize(region = :us, public = nil, private = nil)
-    @public = public
-    @private = private
-
-    @proto = @public && @private ? "https://" : "http://"
-    @endpoint = '/api/wow'
+  # @param apikey [String] API key used to authenticate the request.
+  def initialize(region = :us, apikey = nil)
+    @apikey = apikey
+    @proto = "https://"
+    @endpoint = '/wow'
     @domain = case region
     when :us
-      'us.battle.net'
+      'us.api.battle.net'
     when :eu
-      'eu.battle.net'
+      'eu.api.battle.net'
     when :kr
-      'kr.battle.net'
+      'kr.api.battle.net'
     when :tw
-      'tw.battle.net'
+      'tw.api.battle.net'
     when :cn
-      'battlenet.com.cn'
+      'api.battlenet.com.cn'
+    when :sea
+      'sea.api.battle.net'
     else
       raise "Invalid region: #{region.to_s}"
     end
@@ -110,8 +108,7 @@ class Battlenet
     self.class.base_uri @base_uri
   end
 
-  # Signs and performs an HTTP GET request. The request is only signed if a public and private
-  # key were provided during object instantiation.
+  # Performs an HTTP GET request. Uses API key if set.
   #
   # @param path (see #make_request)
   # @param params (see #make_request)
@@ -131,8 +128,7 @@ class Battlenet
       "#{@endpoint}#{path}"
     end
 
-    # Signs and performs an HTTP request. The request is only signed if a public and private
-    # key were provided during object instantiation.
+    # Performs an HTTP request. Uses API key if set.
     #
     # @param verb [Symbol] the HTTP verb to perform
     # @param path [String] the path to GET
@@ -146,13 +142,8 @@ class Battlenet
       options = {}
       headers = {}
 
-      if @public && @private
-        now = Time.now
-        signed = sign_request verb, path, now
-        headers.merge!({
-          "Authorization" => "BNET #{@public}:#{signed}",
-          "Date" => now.httpdate
-        })
+      if @apikey
+        params.merge!({"apikey" => @apikey})
       end
 
       options[:headers] = headers unless headers.empty?
@@ -172,17 +163,5 @@ class Battlenet
         raise Battlenet::ApiException.new(response)
       end
       response
-    end
-
-    # Signs an HTTP request.
-    #
-    # @param verb [Symbol] the HTTP verb for the request being signed
-    # @param path [String] the path for the rquest being signed
-    # @param time [Time] the time to use when signing the request
-    # @return [String] value to be used as the final portion of the `Authorization` HTTP header
-    # @see Battlenet::Authentication
-    def sign_request(verb, path, time)
-      auth = Battlenet::Authentication.new @private
-      auth.sign verb, fullpath(path), time
     end
 end
